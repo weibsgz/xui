@@ -1,0 +1,177 @@
+// 定义公共类名;
+
+// 定义字体大小 【12px- 30px】
+@for $i from 12 through 30 {
+  .x-fs-#{$i} {
+    font-size: #{$i}px !important;
+  }
+}
+
+// 定义字体加粗
+$bolds: "300" "500" "800";
+// 设置颜色
+@each $bold in $bolds {
+  .x-weight-#{$bold} {
+    font-weight: #{$bold} !important;
+  }
+}
+// 定义文字对齐方式
+$alignments: (
+  "center": "center",
+  "left": "left",
+  "right": "right"
+);
+
+@each $alignment, $text-align in $alignments {
+  .x-text-#{$alignment} {
+    text-align: #{$text-align} !important;
+  }
+}
+
+// 设置显示display方式
+$displays: "block" "flex" "inline" "inline-block" "inline-flex" "none";
+
+@each $display in $displays {
+  .x-dis-#{$display} {
+    display: #{$display} !important;
+  }
+}
+
+$colors: (
+  "blue": #0088ff,
+  "black": #181818,
+  "gray": #7a848d
+) !default;
+
+// 设置颜色
+@each $name, $pair in $colors {
+  .x-color-#{$name} {
+    color: $pair !important;
+  }
+}
+
+// 定义 margin padding 间距
+$gaps: (
+  "0": 0,
+  "5": 5px,
+  "8": 8px,
+  "10": 10px,
+  "12": 12px,
+  "14": 14px,
+  "15": 15px,
+  "16": 16px,
+  "18": 18px,
+  "20": 20px,
+  "22": 22px,
+  "25": 25px,
+  "28": 28px,
+  "30": 30px,
+  "50": 50px
+) !default;
+
+@each $name, $gap in $gaps {
+  .x-margin-#{$name} {
+    margin: $gap !important;
+  }
+
+  .x-mt-#{$name} {
+    margin-top: $gap !important;
+  }
+
+  .x-mb-#{$name} {
+    margin-bottom: $gap !important;
+  }
+
+  .x-ml-#{$name} {
+    margin-left: $gap !important;
+  }
+
+  .x-mr-#{$name} {
+    margin-right: $gap !important;
+  }
+
+  .x-padding-#{$name} {
+    padding: $gap !important;
+  }
+
+  .x-pt-#{$name} {
+    padding-top: $gap !important;
+  }
+
+  .x-pb-#{$name} {
+    padding-bottom: $gap !important;
+  }
+
+  .x-pl-#{$name} {
+    padding-left: $gap !important;
+  }
+
+  .x-pr-#{$name} {
+    padding-right: $gap !important;
+  }
+}
+.x-float {
+  &-l {
+    float: left !important;
+  }
+  &-r {
+    float: right !important;
+  }
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+ul.x-nav {
+  width: 1200px;
+  margin: 0 auto;
+  height: 46px;
+  z-index: 99;
+  line-height: 46px;
+  background: #0088ff;
+  text-align: center;
+  li {
+    display: inline-block;
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    &.cur {
+      font-weight: bold;
+    }
+    a {
+      color: #fff;
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}
+ul.x-nav {
+  width: 1200px;
+  margin: 0 auto;
+  height: 46px;
+  z-index: 99;
+  line-height: 46px;
+  background: #0088ff;
+  text-align: center;
+  li {
+    display: inline-block;
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    &.cur {
+      font-weight: bold;
+    }
+    a {
+      color: #fff;
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}

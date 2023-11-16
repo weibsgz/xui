@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>滚动侧边栏吸顶 </title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+
+  <style></style>
+</head>
+
+<body>
+  <div id="root">
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+      <div class="clearfix">
+        <div class="x-float-l left-content" style="height: 3000px;width: 850px;">
+          <div class="doc">
+            <h1>滚动侧边栏吸顶</h1>
+            <dl class="introDl">
+              <dt>
+                引用文件
+              </dt>
+              <dd>
+                <pre>
+                  <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+                  引用单个js文件
+                  <p>//asserts.xcarimg.com/xui/js/single/xStickTop.single.js</p>
+                  或者引用全部js文件
+                  <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+                </pre>
+              </dd>
+            </dl>
+            <dl class="introDl">
+              <dt>
+                调用方式
+              </dd>
+              <dd>
+                <pre>
+                  new xStickTop({
+                    container: $('.right-content'),
+                    titleEleContainer: $('.left-div'),
+                  })
+                </pre>
+              </dd>
+            </dl>
+            <dl class="introDl">
+              <dt>语法和参数</dt>
+              <dd>
+                <table>
+                  <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                  </tr>
+                  <tr>
+                    <td> container </td>
+                     <td>必填，表示右侧容器的选择器</td>
+                  </tr>
+                  <tr>
+                    <td>titleEleContainer</td>
+                    <td>必填，表示右侧容器中每个模块的选择器, 每个模块的容器必须设置自定义属性 <span style="color: red;">data-title="模块标题"</span></td>
+                  </tr>
+                </table>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <div class="x-float-r right-content" style="height: auto; width: 400px; background: lightcoral;">
+          <div style="height: 300px; width: 300px; background: grey;" class="left-div div1" data-title="第一个标题">
+            <h1 class="moduleTitle">第一个</h1>
+            <p>h222</p>
+          </div>
+          <div style="height: 300px;width: 300px; background: green;" class="left-div div2" data-title="第二个标题">
+            <h1 class="moduleTitle">第二个</h1>
+            <p>h333</p>
+          </div>
+          <div style="height: 300px; width: 300px;background: yellow;" class="left-div div3" data-title="第三个标题">
+            <h1 class="moduleTitle">第三个</h1>
+            <p>h3334545</p>
+          </div>
+          <div style="height: 300px;width: 300px;  background: rebeccapurple;" class="left-div div4" data-title="第四个标题">
+            <h1 class="moduleTitle">第四个</h1>
+            <p>99999</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  window.onload = function () {
+    new xStickTop({
+      container: $('.right-content'),
+      titleEleContainer: $('.left-div'),
+    })
+  }
+</script>
+<script>
+  
+</script>

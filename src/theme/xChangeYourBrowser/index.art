@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>XUI</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+    <style>
+    *{padding:0; margin:0}
+      .testCss {
+        width: 200px;
+        height:200px;
+        color: red;
+        border: 1px solid red;
+      }
+
+       .testCss h2 {
+         margin:0 !important;
+       }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div class="aside">
+        {{include '../../components/leftNav/index.art'}}
+      </div>
+      <div class="main">
+        <div class="doc">
+          <h1>提示更换浏览器 （大于IE10）</h1>
+          <dl class="introDl">
+            <dt>说明</dt>
+            <dd>
+              此方法可以判断当前浏览器版本 如果低于IE10(不包含IE10) 提示用户更换浏览器,看效果请用IE浏览器
+            </dd>
+            <dt>引用地址</dt>
+            <dd>
+              <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+              <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+              <p>或者单独引用组件的JS</p>
+              <p>//asserts.xcarimg.com/xui/js/single/xChangeYourBrowser.single.js   (需要插入页面底部)</p>
+            </dd>
+          </dl>
+  
+      
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+ 
+
+
+
+
+</script>

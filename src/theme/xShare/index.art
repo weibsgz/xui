@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>XUI</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+    <script src="//asserts.xcarimg.com/resource/common/share/static/api/js/share.js"></script>
+</head>
+
+<body>
+	<div id="root" style="height:2000px;background: #f8f8f8">
+		<div class="aside">
+			{{include '../../components/leftNav/index.art'}}
+     
+		</div>
+		<div class="main" >
+			<div class="doc">
+				<dl class="introDl">
+					<dt>说明</dt>
+					<dd>分享</dd>
+					<dt>引用地址：</dt>
+					<dd>
+						<p>http://asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+						<p>http://asserts.xcarimg.com/xui/js/single/xShare.single.js</p>
+					</dd>
+					<dt>使用方法</dt>
+          new xShare({
+            right:200,
+            bottom:100
+          })
+				</dl>
+			</dic>
+		</div>
+	</div>
+
+</body>
+
+</html>
+<script>
+//第一个xBackToTop是文件夹名也就是entry名
+//第二个是exports的方法名
+ new xShare({
+   right:200,
+   bottom:100
+ })
+</script>

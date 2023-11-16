@@ -1,0 +1,5 @@
+{
+  "presets": [ "env", "stage-3"],
+  "ignore": ["./node_modules/webuploader/dist/webuploader.fis.js"], //忽略此文件进行babel转换
+  "plugins": ["transform-object-assign"]
+}

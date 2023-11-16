@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>XUI</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+  <style>
+    .section1 {
+      float: left;
+      width: 300px;
+      margin-right: 20px;
+    }
+
+    .section2 {
+      float: left;
+      width: 600px;
+    }
+
+    .hor {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .section3,
+    .section4,
+    .section5,
+    .section6 {
+      float: left;
+      width: 300px;
+      height: 30px;
+      /* background-color: #ccc; */
+      margin-right: 30px;
+    }
+
+    #btn1 {
+      padding: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+      <div class="doc">
+        <h1>品牌车系级联</h1>
+        <dl class="introDl">
+          <dt>说明</dt>
+          <dd>页面引用资源后,你可在页面创建一个空的容器,通过调用初始化级联下拉框,级联下拉框自适应容器宽度</dd>
+          <dt>引用地址</dt>
+          <dd>
+            <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+            <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+            <p>或者单独引用组件的JS</p>
+            <p>//asserts.xcarimg.com/xui/js/single/xCascade.single.js</p>
+          </dd>
+        </dl>
+        <dl class="introDl">
+            <dt>分为两个下拉框</dt>
+            <dd>
+                <div class="hor clearfix">
+                    <section class="section3"></section>
+                    <section class="section4"></section>
+                </div>
+                <pre>
+                        new xCascade({
+                          dom:".section3",  //容器
+                          chexidom:'.section4', //车系DOM 如何是合并在一起的车型车系菜单的不填     
+                          placeholder:'请选择品牌',
+                          placeholderChexi:'请选择车系',  
+                          pinpaiInterface: 'https://www.xcar.com.cn/bbs/xbbsapi/post_card/get_brand.php', //品牌接口
+                          chexiInterface:'https://www.xcar.com.cn/home_api/?service=brand.get_brand_serise',  //车系接口
+                          showImg:true,
+                          expand:false,          
+                          clickCheXiCb:function(data) {
+                              //选择完车系后会执行这个回调，所选的ID和NAME会返回给你
+                              console.log(data)
+                          },
+                          initPinpaiCb:function() {
+                            // $(".section3 .select span").text("可以通过这种方式回显")
+                            //也可以通过设置 pbid/pbname /pserid/pserText回显
+                          }       
+                      })
+                </pre>
+          </dd>
+        </dl>
+
+        <dl class="introDl">
+          <dt>一个下拉框品牌和车系合并</dt>
+          <dd>
+            <div class="hor clearfix">
+              <div class="section1"></div>
+            </div>
+            <pre>
+                     new xCascade({
+                        dom:".section1",  //容器 必填注意要加. 或者 #
+                        placeholder:'请选择品牌', //placeholder 默认：'请选择品牌'       
+                        pinpaiInterface: 'https://www.xcar.com.cn/bbs/xbbsapi/post_card/get_brand.php', //品牌接口
+                        chexiInterface:'https://www.xcar.com.cn/home_api/?service=brand.get_brand_serise',  //车系接口
+                        expand:true, //是否默认展开
+                        pbid:260,
+                        pbname:'捷途',
+                        pserid:4017,
+                        pserText:'捷途X70 Coupe',
+                        clickCheXiCb:function(data) {
+                              console.log(data)
+                        },
+                        initPinpaiCb:function() {
+                            
+                        }
+                    })
+
+                </pre>
+          </dd>
+        </dl>
+
+        <dl class="introDl">
+          <dt>选中后的品牌和车系ID被绑定到你创建的容器元素上 属性值为saveData</dt>
+          <dd>
+            <p>取值示例 ：$(".section1").attr('saveData')</p>
+            <p>如果是分开容器的品牌和车系ID分别绑定在两个容器上，自己取便可</p>
+          </dd>
+        </dl>
+
+        <dl class="introDl">
+          <dt>属性</dt>
+          <dd>
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>dom</td>
+                <td>品牌插入的容器</td>
+                <td>注意带. 或者 # 字符串</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>chexidom</td>
+                <td>车系插入的容器</td>
+                <td>注意带. 或者 # 字符串</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>placeholder</td>
+                <td>品牌的placeholder</td>
+                <td>string</td>
+                <td>请选择品牌</td>
+              </tr>
+              <tr>
+                <td>placeholderChexi</td>
+                <td>车系的placeholder</td>
+                <td>string</td>
+                <td>请选择车系</td>
+              </tr>
+              <tr>
+                <td>pinpaiInterface</td>
+                <td>取品牌的接口</td>
+                <td>string</td>
+                <td>https://www.xcar.com.cn/bbs/xbbsapi/post_card/get_brand.php</td>
+              </tr>
+              <tr>
+                <td>chexiInterface</td>
+                <td>取车系的接口</td>
+                <td>string</td>
+                <td>https://www.xcar.com.cn/home_api/?service=brand.get_brand_serise</td>
+              </tr>
+              <tr>
+                <td>showImg</td>
+                <td>是否显示品牌小ICON</td>
+                <td>Boolean</td>
+                <td>true</td>
+              </tr>
+              <tr>
+                <td>expand</td>
+                <td>是否默认展开品牌下拉框</td>
+                <td>Boolean</td>
+                <td>false</td>
+              </tr>
+               <tr>
+                <td>pbid</td>
+                <td>默认品牌ID</td>
+                <td>Number</td>
+                <td></td>
+              </tr>
+               <tr>
+                <td>pbname</td>
+                <td>默认品牌名称</td>
+                <td>String</td>
+                <td></td>
+              </tr>
+               <tr>
+                <td>pserid</td>
+                <td>默认车系ID</td>
+                <td>Number</td>
+                <td></td>
+              </tr>
+               <tr>
+                <td>pserText</td>
+                <td>默认车系名称</td>
+                <td>String</td>
+                <td></td>
+              </tr>
+            </table>
+          </dd>
+        </dl>
+
+        <dl class="introDl">
+            <dt>方法</dt>
+            <dd>
+              <table>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>                 
+                </tr>
+                <tr>
+                  <td>initPinpaiCb</td>
+                  <td>品牌接口初始化后执行的函数</td>
+                  <td>无</td>                
+                </tr>
+                <tr>
+                  <td>clickCheXiCb</td>
+                  <td>点击具体车系后触发的回调函数</td>
+                  <td>4个参数 pbid, serid , pbname, pserText</td>                
+                </tr>
+                <tr>
+                  <td>clickPinpaiCb</td>
+                  <td>点击品牌后触发的回调函数</td>
+                  <td>2个参数 pbid,  pbname</td>                
+                </tr>
+               
+              </table>
+            </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+
+   
+
+   new xCascade({
+       dom:".section3",  //容器
+       chexidom:'.section4', //车系DOM 如何是合并在一起的车型车系菜单的不填     
+       placeholder:'请选择品牌',
+       placeholderChexi:'请选择车系',  
+       pinpaiInterface: 'https://www.xcar.com.cn/bbs/xbbsapi/post_card/get_brand.php', //品牌接口
+       chexiInterface:'https://www.xcar.com.cn/home_api/?service=brand.get_brand_serise',  //车系接口
+       pbid:260,
+       pbname:'捷途',
+       pserid:4017,
+       pserText:'捷途X70 Coupe',
+       showImg:true,
+       expand:false,  
+       clickPinpaiCb:function(data){
+         console.log(data)
+       },      
+       clickCheXiCb:function(data) {
+           //选择完车系后会执行这个回调，所选的ID和NAME会返回给你
+          console.log(data)
+       },
+       initPinpaiCb:function() {
+        // $(".section3 .select span").text("可以通过这种方式回显")
+        //也可以通过设置 pbid/pbname /pserid/pserText回显
+       }       
+   })
+
+   new xCascade({
+       dom:".section1",  //容器 必填注意要加. 或者 #
+       placeholder:'请选择品牌', //placeholder 默认：'请选择品牌'       
+       pinpaiInterface: 'https://www.xcar.com.cn/bbs/xbbsapi/post_card/get_brand.php', //品牌接口
+       chexiInterface:'https://www.xcar.com.cn/home_api/?service=brand.get_brand_serise',  //车系接口
+       expand:false, //是否默认展开
+       pbid:260,
+       pbname:'捷途',
+       pserid:4017,
+       pserText:'捷途X70 Coupe',
+       clickCheXiCb:function(data) {
+            console.log(data)
+       },
+       initPinpaiCb:function() {
+          
+       }
+   })
+
+</script>

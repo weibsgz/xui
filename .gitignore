@@ -1,0 +1,10 @@
+.DS_Store
+.gitconfig
+node_modules/
+npm-debug.log
+.idea/
+.happypack
+package-lock.json
+dist
+.history
+.sass-cache

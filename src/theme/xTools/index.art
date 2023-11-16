@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>XUI</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+
+    <style></style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div class="aside">
+        {{include '../../components/leftNav/index.art'}}
+      </div>
+      <div class="main">
+        <div class="doc">
+          <h1>常用工具类函数</h1>
+          <dl class="introDl">
+            <dt>说明</dt>
+            <dd>额外给提供一个工具类函数库，这个库可以是开发本组件库用到的函数类，单独打包出来提供大家使用</dd>
+            <dt>引用地址</dt>
+            <dd>
+              <p>http://asserts.xcarimg.com/xui/js/utils.min.js</p>
+            </dd>
+          </dl>
+
+          <dl class="introDl">
+            <dt>fetchData(可链式调用)</dt>
+            <dd>
+              <pre>
+                  xUtils.fetchData.get(url, data, baseUrl).done(function(res){
+
+                  }).done(function(){}).fail(function(err){})
+
+                  xUtils.fetchData.post(url, data, baseUrl).done(function(res){
+
+                  }).fail(function(err){})
+              </pre>
+            </dd> 
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>链接</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>传送的数据</td>
+                <td>{}</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>baseUrl</td>
+                <td>公共URL，可不传</td>
+                <td>string</td>
+                <td>''</td>
+              </tr>
+             
+            </table>
+          </dl>
+
+          <dl class="introDl">
+            <dt>getUrlParams(取url后边?的参数)</dt>
+            <dd>
+              <pre>
+                  var a = xUtils.getUrlParams('http://www.baidu.com?id=2&age=3', 'age')
+                  console.log(a); //3
+              </pre>
+            </dd> 
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>url</td>
+                <td>链接</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>value</td>
+                <td>要取值的字段</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>
+            </table>
+          </dl>
+
+
+           <dl class="introDl">
+            <dt>setCookie</dt>
+            <dd>
+              <pre>
+                  xUtils.setCookie(name, value, expires, path, domain, secure)           
+                  xUtils.setCookie('place_prid_lin', 1, 86400, '/', '.xcar.com.cn');
+              </pre>
+            </dd> 
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>name</td>
+                <td>cookie的key</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>value</td>
+                <td>cookie的value</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>expires</td>
+                <td>过期时间，单位秒</td>
+                <td>number</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>path</td>
+                <td>路径</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>domain</td>
+                <td>域名</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>
+            </table>
+          </dl>
+
+
+          <dl class="introDl">
+            <dt>getCookie</dt>
+            <dd>
+              <pre>
+                  xUtils.getCookie(name)          
+              </pre>
+            </dd> 
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>name</td>
+                <td>cookie的key</td>
+                <td>string</td>
+                <td> - </td>
+              </tr>             
+            </table>
+          </dl>
+          <dl class="introDl">
+            <dt> debounce </dt>
+            <dd>
+              <p>创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 fn 方法。</p>
+              <pre>
+                  xUtils.debounce(fn, delay)          
+              </pre>
+            </dd> 
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>fn</td>
+                <td>要防抖动的函数</td>
+                <td>function</td>
+                <td> - </td>
+              </tr>             
+              <tr>
+                <td>delay</td>
+                <td>需要延迟的毫秒数</td>
+                <td>number</td>
+                <td> 10 </td>
+              </tr>             
+            </table>
+          </dl>
+          <dl class="introDl">
+            <dt> throttle </dt>
+            <dd>
+              <p>创建一个节流函数，在 wait 秒内最多执行 fn 一次的函数。</p>
+              <pre>
+                  xUtils.throttle(fn, wait)          
+              </pre>
+            </dd> 
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>fn</td>
+                <td>要节流的函数</td>
+                <td>function</td>
+                <td> - </td>
+              </tr>             
+              <tr>
+                <td>wait</td>
+                <td>需要节流的毫秒</td>
+                <td>number</td>
+                <td> 10 </td>
+              </tr>             
+            </table>
+          </dl>
+       </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script></script>

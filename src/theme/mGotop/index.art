@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>爱卡汽车触屏端返回顶部组件</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+ 
+</style>
+<body>
+  <div id="root">2
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+        <h2 class="drawer-chou-ti">gotop返回顶部</h2>
+        <p class="drawer-chou-title">在实际开发中我们会遇到很多特别的场景</p>
+        <p class="ji-ben-yong-fa" style="font-weight:bold">一、基本用法</p>
+        <p class="drawer-chou-title">看下我们的gotop返回顶部如何使用</p>
+        <p style="font-weight:bold">二、效果展示</p>
+        <div class="effectDisplay">
+          <p style="padding-left: 129px">H5展示</p>
+          <div class="effectDisplay_body">
+              <div class="effectDisplay_body_g">
+                <ul class="effectDisplay_body_ul">
+                </ul>
+              </div>
+          </div>
+        </div>
+        <p style="font-weight:bold;margin-top:20px;margin-bottom:20px;">三、使用教程</p>
+        <div class="drawer-chou-title-border">
+          <!-- h5代码 S-->
+          <ul class="drawer-h5">
+            <li>触屏端如何使用gotop</li>
+            <li>1、安装 npm install -g  nrm </li>
+            <li>2、添加爱卡私有库源地址 nrm  add  xnpm --- http:\/\/registry.npm.op.xcar.com.cn:8081\/repository\/npm-group  切换爱卡镜像源</li>
+            <li>3、安装npm install gotop;</li>
+            <li>4、JS中引入 import gotop from 'gotop/v4';//返回顶部</li>
+            <li><span style="color:red;">  Tip:  </span>public文件夹存放公共样式</li>
+            <li class="drawer-sili">代码实例</li>
+            <li>
+<pre style="overflow-x:auto;">
+  <code>
+/*js逻辑*/
+gotop();
+  </code>
+</pre>              
+            </li>
+          </ul>
+          <!-- h5代码 E-->
+          <!-- APP代码 S-->
+          <div style="display:none" class="drawer-app"></div>
+          <!-- APP代码 E-->
+        </div>
+        <div class="doc">
+          <dl class="introDl">
+              <dt>方法</dt>
+              <dd>
+                <table>
+                  <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>                 
+                  </tr>
+                  <tr>
+                    <td>gotop</td>
+                    <td>返回顶部函数</td>
+                    <td>无</td>                
+                  </tr>
+                </table>
+              </dd>
+          </dl>
+        </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+
+</script>

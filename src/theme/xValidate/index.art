@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>表单验证</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+  </head>
+<style>
+
+  .introDl{
+    margin: 20px 0;
+  }
+  textarea{
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
+    padding: 18px 24px;
+    width: 1200px;
+  }
+  pre{width:1200px;}
+  .doc h3{
+    font-size: 30px;font-weight: 600px;
+  }
+   #formId ul{
+    // display:flex;
+   }
+  #formId ul li{
+     width:50%;
+     float:left;
+     height:50px;
+     position:relative;
+     
+  }
+  #formId ul li label{
+    width:70px;
+    display:inline-block;
+    overflow:hidden;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    color: rgba(0,0,0,.65);
+    vertical-align: -14px;
+        
+  }
+  #formId ul li input {
+      border:1px solid #d9d9d9;
+      height:24px;
+      line-height:24px;
+      border-radius: 2px;
+      color: rgba(0,0,0,.65);
+      display:inline-block;
+  }
+  .error{
+    color:red;
+    font-size:12px;
+    display:block;
+    position:absolute;
+    bottom:-5px;
+    left:80px;
+    width:200px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  .btn{
+    
+    background:#1890ff;
+    color:#fff;
+    border: 1px solid #1890ff;
+    display:block;
+    float:left;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    width:100px;
+    box-size:boder-box;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-top:20px;
+  }
+  button.btn{
+     margin-left:30%;
+     margin-right:20px;
+  }
+
+</style>
+  <body>
+    <div id="root">
+      <div class="aside">
+        {{include '../../components/leftNav/index.art'}}
+      </div>
+
+      <div class="main">
+        <div class="doc">
+          <h1>表单验证</h1>
+          <dl class="introDl">
+             <dt>说明</dt>
+             <dd>validate校验</br>
+              1.支持自定义验证规则；</br>
+              2.验证后的回调；</br>
+              3.支持离焦后的校验；</br>
+              3.支持非必填验证；</br>
+              4.支持验证自定义提示信息；</br>
+              5.支持自定义按钮以及表单默认的提交按钮 type=submit；</dd>
+             <dt>引用地址</dt>
+             <dd>
+               引用单个js文件
+               <p>//asserts.xcarimg.com/resource/common/validate/validate.js</p>
+               或者引用全部js文件
+               <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+             </dd>
+           </dl>
+           
+<dl class="introDl">
+  <dt>案例演示:</dt>
+  <dd>
+      <div style=" width: 600px;height: 150px;margin-bottom:20px;margin-top:20px; border:1px solid #d9d9d9;padding:20px;">
+              <form action="" id="formId">
+                <input type="hidden" value="222" name="aaaa">
+                <ul>
+                    <li> 
+                        <label for="">姓名</label> <input type="text" name="name" isCharToTwolen="true" title="姓名"; required="true"   vaildata='{"rangelength":"3,7"}'>
+                    </li>
+                    <li> 
+                        <label for="">电话</label> <input type="text" name="phone" title="手机号" required="true"   vaildata='{"length":11,"phone":true,"minLength":"2,"}'>
+                    </li>
+                    <li> 
+                        <label for="">身份证号</label> <input type="text" name="carId" title="身份证号"    vaildata='{"carId":true}'>
+                    </li>
+                    <li> 
+                        <label for="">身份证号2</label> <input type="text" name="carId" title="身份证号" msg="请填身份证2" msgObj='{"carId":"请填写真正的身份证2"}' required="true"   vaildata='{"carId":true}'>
+                    </li>
+                </ul>
+                <button type="submit" class="btn">提交</button>
+                <div id="btn"  class="btn">提交</div>
+            </form>
+      </div>
+<dt>API:</dt>
+<dt>一.html 结构</dt>
+<dd>1.说明：html 表单结构必须以form包裹。</dd>
+<textarea style="height: 490px;">
+     <form action="" id="formId">
+        <ul>
+            <li> 
+                <label for="">姓名</label>
+                <input type="text" name="name"  title="姓名";required="true">
+            </li>
+            <li> 
+                <label for="">电话</label>
+                <input type="text" name="phone" title="手机号" required="true" vaildata='{"maxlength":11,"phone":true}'>
+            </li>
+            <li> 
+                <label for="">身份证号</label> 
+                <input type="text" name="carId" title="身份证号"   vaildata='{"carId":true}'>
+            </li>
+        </ul>
+        <button type="submit">提交</button>
+        <div id="btn">提交</div>
+    </form>
+</textarea>
+<dd>2.语法说明 (所有验证属性可再input，select，textarea 结构中添加);</dd>
+
+<dl class="introDl">
+    <dd>
+      <table>
+        <tr>
+          <th>属性</th>
+          <th>value</th>
+          <th>是否必填</th>
+          <th>描述</th>
+        </tr>
+        <tr>
+          <td>required</td>
+          <td>true/false</td>
+          <td>（非必填）</td>
+          <td> 此属性为是否必填项，如果有此属性title 为必填项 </td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>（必填）</td>
+            <td> 对应给后端的key </td>
+        </tr>
+        <tr>
+            <td>vaildate</td>
+            <td>字符串对象'{"maxlength":11}'</td>
+            <td>（非必填）</td>
+            <td>此属性为组合验证，注意{}内为规范的json格式</td>
+        </tr>
+        <tr>
+            <td>msgObj</td>
+            <td>字符串对象'{"maxlength":"最大修改数"}'</td>
+            <td>（非必填）</td>
+            <td>此属性为修改组合验证提示语，注意{}内为规范的json格式；</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>string</td>
+            <td>（非必填）</td>
+            <td>必填写所替换的内容，如果 请填写姓名，title=姓名</td>
+        </tr>
+   
+        <tr>
+            <td>msg</td>
+            <td>string</td>
+            <td>（非必填）</td>
+            <td>自定义提示信息</td>
+        </tr>
+        <tr>
+            <td>ischeck</td>
+            <td>true/false</td>
+            <td>（非必填）</td>
+            <td>是否校验此项 默认false</td>
+        </tr>
+        <tr>
+            <td>isCharToTwolen</td>
+            <td>string</td>
+            <td>（非必填）</td>
+            <td>是否验证汉字为两个字符 默认false</td>
+        </tr>
+      </table>
+    </dd>
+</dl>
+
+<dt>二. javasctipt 部分</dt>
+<dd>1.以原型的方式入口 new vaildate({})；</dd>
+<textarea style="height: 840px;">
+var myVadatat = new Validate({
+      form:$("#formId"),
+      changeCallback:function(opts){
+              //state：状态
+              //msg :错误信息
+              //tatget：为错误信息的输入框对象
+              //data：返回表单数据以object的形式
+              if(opts.state){
+                  //验证通过
+                  opts.target && opts.target.next(".error").remove();
+              }else{
+                  //验证失败
+                  opts.target && opts.target.next(".error").remove();
+                  opts.target && opts.target.after("<span class='error intro_txt'>"+opts.msg+"</span>");
+              }
+          },
+          submitCallback:function(opts){  //提交按钮后的回调函数
+              //state：状态
+              //msg :错误信息
+              //tatget：为错误信息的输入框对象
+              //data：返回表单数据以object的形式
+              if(opts.state){
+                  //验证通过
+                  
+              }else{
+                  //验证失败
+                  opts.target && opts.target.next(".error").remove();
+                  opts.target && opts.target.after("<span class='error intro_txt'>"+opts.msg+"</span>");
+              }
+          }
+      });
+
+</textarea>
+<dl class="introDl">
+    <dd>
+      <table>
+        <tr>
+          <th>参数</th>
+          <th>value</th>
+          <th>是否必填</th>
+          <th>描述</th>
+        </tr>
+        <tr>
+          <td>form</td>
+          <td>form的dom对象</td>
+          <td>（必填）</td>
+          <td>必须以dom对象的形式 </td>
+        </tr>
+        <tr>
+            <td>changeCallback</td>
+            <td>输入框改变后的钩子函数</td>
+            <td>（必填）</td>
+            <td> 接收object 为此输入框的具体信息  如：state：状态 msg :错误信息 tatget：为错误信息的输入框对象 </td>
+        </tr>
+        <tr>
+            <td>submitCallback</td>
+            <td>提交后的钩子函数</td>
+            <td>（必填）</td>
+            <td>接收object 为此输入框的具体信息  如：state：状态 msg :错误信息 tatget：为错误信息的输入框对象 data：返回表单数据以object的形式</td>
+        </tr>
+        <tr>
+            <td>isCheckSubmit</td>
+            <td>阻止表单提交按钮时候的验证</td>
+            <td>（非必填）</td>
+            <td>此属性主要用于表单反显,加密是提交按钮不做校验,注意 如果修改表单中的值不通过验证规则则会阻止表单提交</td>
+        </tr>
+      </table>
+    </dd>
+</dl>
+<dd>2.原型的扩展方法</dd>
+<textarea style="height: 30px;">
+ myVadatat.addRules([{"rule":/(^\d{15}$)|(^\d{17}(\d|X)$)/,"name":"carId","msg":"请填写正确的省份证号"}])
+</textarea>
+<dl class="introDl">
+    <dd>
+      <table>
+        <tr>
+          <th>属性</th>
+          <th>value</th>
+          <th>是否必填</th>
+        </tr>
+        <tr>
+          <td>rule</td>
+          <td>规则正则</td>
+          <td>（必填）</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>（必填）</td>
+        </tr>
+        <tr>
+            <td>msg</td>
+            <td>提示信息</td>
+            <td>（必填）</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>对应的key</td>
+            <td>（必填）</td>
+        </tr>
+       
+      </table>
+    </dd>
+</dl>
+<dt>三.内置的验证</dt>
+<dl class="introDl">
+    <dd>
+      <table>
+        <tr>
+          <th>名称</th>
+          <th>key</th>
+          <th>val</th>
+          <th>类如</th>
+        </tr>
+        <tr>
+          <td>手机号</td>
+          <td>phone</td>
+          <td>true</td>
+          <td>'{"phone":true}' </td>
+        </tr>
+        <tr>
+            <td>身份证号</td>
+            <td>provincialCard</td>
+            <td>true</td>
+            <td>'{"provincialCard":true}' </td>
+        </tr>
+        <tr>
+            <td>机构代码</td>
+            <td>organizationCode</td>
+            <td>true</td>
+            <td>'{"organizationCode":true}'</td>
+        </tr>
+        <tr>
+            <td>规定字符长度</td>
+            <td>length</td>
+            <td>{length}</td>
+            <td>'{"length":"5"}'</td>
+        </tr>
+        <tr>
+            <td>区间字符串</td>
+            <td>rangelength</td>
+            <td>(minlength,maxlength)</td>
+            <td>'{"rangelength":"0,5"}'</td>
+        </tr>
+        <tr>
+            <td>验证码</td>
+            <td>verifyCode</td>
+            <td>true</td>
+            <td>'{"verifyCode":true}'</td>
+        </tr>
+        <tr>
+            <td>护照</td>
+            <td>passport</td>
+            <td>true</td>
+            <td>'{"passport":true}'</td>
+        </tr>
+        <tr>
+            <td>邮箱</td>
+            <td>email</td>
+            <td>true</td>
+            <td>'{"email":true}'</td>
+        </tr>
+        <tr>
+            <td>非空格</td>
+            <td>noBlankSpace</td>
+            <td>true</td>
+            <td>'{"noBlankSpace":true}'</td>
+        </tr>
+        <tr>
+            <td>非法字符</td>
+            <td>specialSymbols</td>
+            <td>true</td>
+            <td>'{"specialSymbols":true}'</td>
+        </tr>
+        <tr>
+            <td>请期待~~</td>
+        </tr>
+      </table>
+    </dd>
+</dl>
+
+        </div>
+      </div>
+    </div>   
+  </body>
+</html>
+ <script>
+
+
+ var myVadatat = new xValidate({
+               form:$("#formId"),
+               changeCallback:function(opts){
+                        //state：状态
+                        //msg :错误信息
+                        //tatget：为错误信息的输入框对象
+                        //data：返回表单数据以object的形式
+                       console.log(opts.state,opts.msg,opts.data,opts);
+                        if(opts.state){
+                            //验证通过
+                            opts.target && opts.target.next(".error").remove();
+                        }else{
+                            //验证失败
+                            opts.target && opts.target.next(".error").remove();
+                            opts.target && opts.target.after("<span class='error intro_txt'>"+opts.msg+"</span>");
+                            //alert(opts.msg);
+                        }
+                    },
+                    submitCallback:function(opts){  //提交按钮后的回调函数
+                        //state：状态
+                        //msg :错误信息
+                        //tatget：为错误信息的输入框对象
+                        //data：返回表单数据以object的形式
+
+                        //console.log("提交");
+                       //console.log(opts.state,opts.msg,opts.data,opts);
+                       console.log(opts);
+                        if(opts.state){
+                            //验证通过
+                            alert('提交成功');
+                        }else{
+                            //验证失败
+                            opts.target && opts.target.next(".error").remove();
+                            opts.target && opts.target.after("<span class='error intro_txt'>"+opts.msg+"</span>");
+                           // alert(opts.msg);
+                        }
+                    }
+           });
+            myVadatat.addRules([{"rule":/(^\d{15}$)|(^\d{17}(\d|X)$)/,"name":"carId","msg":"请填写正确的省份证号"}])
+           $("#btn").on("click",function(){
+               $("#formId").submit();
+           })
+
+      
+
+</script>

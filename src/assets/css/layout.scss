@@ -1,0 +1,223 @@
+/* 组件库文档的样式，不是包含每个组件的样式 */
+#root {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  .aside {
+    flex: 0 0 210px;
+    padding-top: 30px;
+    padding-left: 20px;
+    // padding-bottom: 3999em;
+    border-right: 1px solid #e3e8f1;
+    background-color: #fff;
+    margin-right: 30px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    max-height: calc(100vh);
+    overflow-y: auto;
+  }
+  .main {
+    // background: lightcyan;
+    flex:1;
+    overflow: hidden;
+    margin-left: 250px;
+  }
+}
+#left-nav {
+  .logo {
+    img {
+      width: 200px;
+    }
+  }
+  .nav{
+    padding-bottom: 100px;
+  }
+  .nav-title {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: #9facba;
+    margin: 10px 0;
+  }
+  .nav-list {
+    li {
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      color: #4c5161;
+      padding-left: 5px;
+    }
+    li.selected {
+      background-color: #e6f7ff;
+      color: #1890ff;
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-right: 3px solid #1890ff;
+      } 
+    }
+  }
+
+
+
+  .menu-title {    
+    position: relative;
+    font-size: 16px;
+    color: rgb(5, 5, 5);
+    margin: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    &::after{
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 13px;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 10px solid #5e6d82;
+    }
+    
+  }
+
+  // .nav-menu{
+  //   .nav-menu-content{
+  //     display: none;
+  //   }
+  //   &.active{
+  //     .nav-menu-content{
+  //       display: block;
+  //     }
+  //   }
+  // }
+
+}
+
+
+/*滚动条的宽度*/
+
+::-webkit-scrollbar {
+  width:9px;
+  height:9px;
+}
+
+/*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  background-color:#ccc;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius:2em;
+}
+
+/*滚动条的设置*/
+
+::-webkit-scrollbar-thumb {
+  background-color:#999;
+  background-clip:padding-box;
+  min-height:28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius:2em;
+}
+/*滚动条移上去的背景*/
+
+::-webkit-scrollbar-thumb:hover {
+   background-color:#fff;
+}
+.doc {
+  width: 80%;
+  
+  h1 {
+    margin: 30px 0;
+    font-size: 32px;
+  }
+  h2{
+    margin: 30px 0;
+    font-size: 24px;
+  }
+  p{
+    margin:10px
+  }
+  textarea{
+    width: 1200px;
+    padding: 18px 24px;
+    line-height: 1.8;
+    font-size: 14px;
+    background-color: #f9fafc;
+    border: none;
+    margin-bottom: 20px;
+    &.scroll {
+      height: 500px;
+      overflow-y: scroll;
+    }
+  }
+  pre {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #fff;
+    line-height: 1.8;
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
+    font-size: 14px;
+    padding: 18px 24px; 
+    border: 1px solid #eaeefb;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    -webkit-font-smoothing: auto;
+    background-color: #fafafa;
+    &.scroll {
+      height: 300px;
+      overflow-y: scroll;
+    }
+  }
+  table{
+    margin-top: 10px;
+    // border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+    color: #5e6d82;
+    font-size: 14px;
+    margin-bottom: 45px;
+    line-height: 1.5em;
+    th{
+      text-align: left;
+      border-top: 1px solid #eaeefb;
+      background-color: #eff2f7;
+      white-space: nowrap;
+      line-height: 24px;
+      padding: 10px;
+    }
+    tr{
+      line-height: 24px;
+      td{
+        border-bottom: 1px solid #eaeefb;
+        padding: 10px;
+        max-width: 250px;
+      }
+    }
+  }
+  dl.introDl{
+    margin: 20px 0;
+    dt{
+      margin-top: 15px;
+      line-height:34px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #4c5161;
+    }
+    dd{
+      line-height: 30px;
+      font-size: 16px;
+    }
+  }
+}

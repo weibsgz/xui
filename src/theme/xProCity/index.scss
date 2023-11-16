@@ -1,0 +1,159 @@
+@import "./../../assets/css/common";
+
+$color-fff: #fff;
+$color-0088ff: #0088ff;
+$color-e6e6e6: #e6e6e6;
+$color-c0c4cc: #c0c4cc;
+$color-7a848d: #7a848d;
+$color-181818: #181818;
+
+$fs-12: 12px;
+$fs-14: 14px;
+$fs-16: 16px;
+$fs-18: 18px;
+$fs-20: 20px;
+
+$pos-rel: relative;
+$pos-abs: absolute;
+$pos-fix: fixed;
+
+.select_box {
+  float: left;
+  width: 260px;
+  height: 34px;
+  line-height: 32px;
+  box-sizing: border-box;
+  margin-right: 12px;
+  position: $pos-rel;
+  .title_box {
+    width: 100%;
+    height: 100%;
+    position: $pos-rel;
+    box-sizing: border-box;
+    border: 1px solid $color-e6e6e6;
+    cursor: pointer;
+    .title {
+      display: inline-block;
+      width: 100%;
+      padding-left: 11px;
+      font-size: $fs-14;
+      white-space: nowrap;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .color_normal{
+      color: $color-181818
+    }
+    .color_no_select{
+      color: $color-7a848d;
+    }
+    .arrow {
+      position: $pos-abs;
+      top: 50%;
+      right: 0;
+      bottom: 0;
+      width: 14px;
+      height: 8px;
+      margin-top: -4px;
+      right: 6px;
+      transition: transform .2s linear;
+      -webkit-transition: transform .2s linear;
+      -moz-transition: transform .2s linear;
+      transform-origin: center center;
+      -webkit-transform-origin: center center;
+      -moz-transform-origin: center center;
+      -ms-transform-origin: center center;
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      background: url(../../assets/images/arrDown_2x.png) center center no-repeat;
+      background: url(../../assets/images/arrDown.png) center center no-repeat \9;
+      background-size: 100%;
+    }
+    .arrow_up {
+      background: url(../../assets/images/arrUp_2x.png) center center no-repeat;
+      background: url(../../assets/images/arrUp.png) center center no-repeat \9;
+      background-size: 100%;
+      transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+    }
+    /* 清除按钮 */
+    .clear{
+      display: none;
+      width: 14px;
+      height: 14px;
+      position: $pos-abs;
+      margin-top: -7px;
+      top: 50%;
+      right: 6px;
+      background: url(../../assets/images/icon_clear@2x.png) center center no-repeat;
+      background: url(../../assets/images/icon_clear@1x.png) center center no-repeat \9;
+      background-size: 100%;
+    }
+    &:hover{
+      .clear {
+        display: block;
+      }
+    }
+  }
+  /* 2.0 */
+  .list_box {
+    position: absolute;
+    width: 100%;
+    height: 313px;
+    top: 34px;
+    display: none;
+    // transition: height 0.3s linear;
+    // -webkit-transition: height 0.3s linear;
+    // -moz-transition: height 0.3s linear;
+    z-index: 9;
+  }
+  /* 2.0 */
+  .list {
+    // display: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    list-style-type: none;
+    background-color: $color-fff;
+    box-sizing: border-box;
+    border: 1px solid $color-e6e6e6;
+    // border-top: none;
+    // border-bottom: none;
+    float: left;
+    li {
+      font-family: "Microsoft YaHei", "PingFang SC", Arial;
+      font-size: $fs-14;
+      position: $pos-rel;
+      line-height: 38px;
+      border-bottom: 1px solid $color-e6e6e6;
+      cursor: pointer;
+      padding-left: 11px;
+      &::before {
+        display: none;
+        content: "";
+        position: $pos-abs;
+        left: 0;
+        top: 50%;
+        width: 4px;
+        height: 18px;
+        margin-top: -9px;
+        border-radius: 2px;
+        background-color: $color-0088ff;
+      }
+      &:hover {
+        color: $color-0088ff;
+      }
+    }
+    .active {
+      color: $color-0088ff;
+      &::before {
+        display: block;
+      }
+    }
+  }
+}

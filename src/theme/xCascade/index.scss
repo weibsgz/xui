@@ -1,0 +1,255 @@
+@import "./../../assets/css/var";
+
+.x-chexidomspan {
+  width: 100%;
+  display: block;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #181818;
+  line-height: 32px;
+  height: 32px;
+  background: #fafbfb;
+  border: 1px solid #e6e6e6;
+  position: relative;
+  border-radius: 2px;
+  box-sizing: border-box;
+  > span {
+    padding-right: 10px;
+  }
+  i {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 7px;
+    right: 12px;
+    background: url(../../assets/images/arrDown.png) no-repeat center\9;
+    background: url(../../assets/images/arrDown_2x.png) no-repeat center;
+    background-size: 16px;
+  }
+}
+.x-main_select_warp {
+  width: 100%;
+  clear: both;
+  height: 32px;
+  position: relative;
+
+  .selectItem {
+    width: 100%;
+    position: relative;
+    float: left;
+    margin-right: 22px;
+    border-radius: 2px;
+    cursor: pointer;
+    .select {
+      width: 100%;
+      height: 32px;
+      background: #fafbfb;
+      border: 1px solid #e6e6e6;
+      position: relative;
+      border-radius: 2px;
+
+      span {
+        width: 100%;
+        display: block;
+        padding: 0 12px;
+        font-size: 14px;
+        color: #181818;
+        line-height: 32px;
+      }
+      i {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 7px;
+        right: 12px;
+        background: url(../../assets/images/arrDown.png) no-repeat center\9;
+        background: url(../../assets/images/arrDown_2x.png) no-repeat center;
+        background-size: 16px;
+      }
+    }
+    .options {
+      width: 100%;
+      height: 300px;
+      position: absolute;
+      left: 0;
+      top: 32px;
+      border-left: 1px solid #e6e6e6;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      background: #fff;
+      //   display: none;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 3;
+      box-sizing: border-box;
+      li {
+        height: 40px;
+        border-bottom: 1px solid #e6e6e6;
+        font-size: 12px;
+        color: #181818;
+        cursor: pointer;
+        padding: 7px 0;
+        box-sizing: border-box;
+        span {
+          display: block;
+          height: 23px;
+          line-height: 23px;
+          border-left: 4px solid transparent;
+          padding-left: 20px;
+          font-size: 14px;
+          color: #181818;
+        }
+      }
+
+      li.disabled,
+      li.disabled:hover {
+        background: #f6f7f8;
+        cursor: default;
+        span {
+          color: #4f5466;
+        }
+      }
+      li:hover {
+        span {
+          color: #0088ff;
+        }
+      }
+      li.action {
+        span {
+          color: #0088ff;
+        }
+      }
+    }
+  }
+  .selectItem.show {
+    .select {
+      i {
+        background: url(../../assets/images/arrUp.png) no-repeat center\9;
+        background: url(../../assets/images/arrUp_2x.png) no-repeat center;
+        background-size: 16px;
+      }
+    }
+  }
+  .selectItem.disabled {
+    cursor: default;
+    .select {
+      span {
+        //   color: #C0C4CC !important;
+      }
+      i {
+        background: url(../../assets/images/arrDisabled.png) no-repeat center\9;
+        background: url(../../assets/images/arrDisabled_2x.png) no-repeat center;
+        background-size: 16px;
+      }
+    }
+  }
+  .selectItem.cx {
+    .cxOpt {
+      width: 100%;
+      clear: both;
+      min-height: 150px;
+      overflow: hidden;
+      height: 300px;
+      position: absolute;
+      left: 0;
+      top: 32px;
+      background: #fff;
+      display: none;
+      z-index: 4;
+      .zm {
+        width: 50px;
+        float: left;
+        box-sizing: border-box;
+        min-height: 150px;
+        border-left: 1px solid #e6e6e6;
+        border-right: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
+        height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        li {
+          width: 29px;
+          height: 30px;
+          font-size: 14px;
+          color: #4f5466;
+          cursor: pointer;
+          line-height: 30px;
+          text-align: center;
+        }
+        li:hover {
+          background: #ebf6ff;
+        }
+        li.action {
+          color: #0088ff;
+          font-weight: bold;
+        }
+      }
+      .options {
+        float: left;
+        //   width:283px;
+        height: 300px;
+        position: relative;
+        left: 0;
+        top: 0;
+        max-height: 500px;
+        overflow-y: auto;
+        display: block;
+        overflow-x: hidden;
+        img {
+          width: 30px;
+          height: 23px;
+          background: #ccc;
+          display: inline-block;
+          margin-right: 10px;
+        }
+        .lizm {
+          height: 40px;
+          box-sizing: border-box;
+          padding: 2px 0;
+          background: #f6f7f8;
+          span {
+            border-left: 4px solid transparent;
+          }
+
+          span:hover {
+            border-left: 4px solid transparent;
+            color: #181818;
+          }
+        }
+        .lizm:hover {
+          span {
+            border-left: 4px solid transparent;
+            color: #181818;
+          }
+        }
+        li.action {
+          span {
+            border-left: 4px solid #0088ff;
+            font-weight: bold;
+          }
+        }
+        i {
+          max-width: 92px;
+          display: inline-block;
+          font-style: normal;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+  .selectItem.cxx {
+    position: absolute;
+
+    top: 0px;
+    .options {
+      li.action {
+        span {
+          border-left: 4px solid #0088ff;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

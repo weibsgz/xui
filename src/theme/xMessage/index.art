@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>全局提示</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+  </head>
+<style>
+
+  .introDl{
+    margin: 20px 0;
+  }
+  textarea{
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
+    padding: 18px 24px;
+    width: 1200px;
+  }
+  pre{width:1200px;}
+  .doc h3{
+    font-size: 30px;font-weight: 600px;
+  }
+   #formId ul{
+    // display:flex;
+   }
+  #formId ul li{
+     width:50%;
+     float:left;
+     height:50px;
+     position:relative;
+     
+  }
+  #formId ul li label{
+    width:70px;
+    display:inline-block;
+    overflow:hidden;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    color: rgba(0,0,0,.65);
+    vertical-align: -14px;
+        
+  }
+  #formId ul li input {
+      border:1px solid #d9d9d9;
+      height:24px;
+      line-height:24px;
+      border-radius: 2px;
+      color: rgba(0,0,0,.65);
+      display:inline-block;
+  }
+  .error{
+    color:red;
+    font-size:12px;
+    display:block;
+    position:absolute;
+    bottom:-5px;
+    left:80px;
+    width:200px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  .btn{
+    
+    background:#1890ff;
+    color:#fff;
+    border: 1px solid #1890ff;
+    display:block;
+    float:left;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    width:100px;
+    box-size:boder-box;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-top:20px;
+    cursor: pointer;
+  }
+  button.btn{
+     margin-right:20px;
+  }
+
+</style>
+  <body>
+    <div id="root">
+      <div class="aside">
+        {{include '../../components/leftNav/index.art'}}
+      </div>
+
+      <div class="main">
+        <div class="doc">
+          <h1>全局提示</h1>
+          <dl class="introDl">
+             <dt>说明</dt>
+             <dd>何时使用</br>
+              1.可提供成功、警告、和错误等反馈信息；</br>
+              2.顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式；</br>
+             <dt>引用地址</dt>
+             <dd>
+               <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+               引用单个js文件
+               <p>//asserts.xcarimg.com/xui/js/single/xMessage.single.js</p>
+               或者引用全部js文件
+               <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+             </dd>
+           </dl>
+           
+<dl class="introDl">
+  <dt>案例演示:</dt>
+  <dd>
+      <div style=" width: 600px;height: 150px;margin-bottom:20px;margin-top:20px; border:1px solid #d9d9d9;padding:20px;">
+             <button  class="btn" id="successBtn">成功</button>
+             <button  class="btn" id="wainBtn">警告</button>
+             <button  class="btn" id="errorBtn">错误</button>
+             <button  class="btn" id="blackBtn">暗黑模式</button>
+      </div>
+<dt>API:</dt>
+<dt>一.组件提供了一些静态方法、使用方式如下：（var msg = new xMessage(option)）</dt>
+<dd>
+   1.msg.success('成功',option)。</br>
+   2.msg.wain('警告',option)。</br>
+   3.msg.error('错误',option)。</br>
+</dd>
+
+<dd>option参数说明</dd>
+
+<dl class="introDl">
+    <dd>
+      <table>
+        <tr>
+          <th>属性</th>
+          <th>value</th>
+          <th>是否必填</th>
+          <th>描述</th>
+        </tr>
+        <tr>
+          <td>width</td>
+          <td>number</td>
+          <td>（非必填）</td>
+          <td>message 的宽,默认"",根据内部内容自动撑开</td>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>number </td>
+            <td>（非必填）</td>
+            <td> message 的高,默认"",根据内部内容自动撑开 </td>
+        </tr>
+        <tr>
+            <td>top</td>
+            <td>number</td>
+            <td>（非必填）</td>
+            <td>message距离盒子顶部的偏移量，默认：50px</td>
+        </tr>
+        <tr>
+            <td>closeTime</td>
+            <td>number（单位：毫秒）</td>
+            <td>（非必填）</td>
+            <td>自动关闭时间，默认3秒</td>
+        </tr>
+        <tr>
+            <td>wrap</td>
+            <td>element</td>
+            <td>（非必填）</td>
+            <td>插入的盒子dom，默认为body</td>
+        </tr>
+   
+        <tr>
+            <td>isAnimation</td>
+            <td>true/false</td>
+            <td>（非必填）</td>
+            <td>是否开启动画，默认 true</td>
+        </tr>
+         <tr>
+            <td>theme</td>
+            <td>string </td>
+            <td>（非必填）</td>
+            <td>提供主题选择：black/黑色 ，default/白色，val/也可自己定义（组件外层class）,默认default</td>
+        </tr>
+        <tr>
+            <td>then</td>
+            <td>function </td>
+            <td>（非必填）</td>
+            <td>关闭后的成功回调，关闭后返回Promise</td>
+        </tr>
+      </table>
+    </dd>
+</dl>
+        </div>
+      </div>
+    </div>   
+  </body>
+</html>
+ <script>
+  var msg = new xMessage();
+  (function(){
+  
+    $('#successBtn').on("click",function(){
+        msg.success('This is a success message')
+       /*  msg.message({
+          content:'<span>3333333</span>',
+          closeTiem:10000,
+          type:'inif'
+        }).then(()=>{
+          console.log('guanbi')
+        }) */
+    })
+    
+    $('#wainBtn').on("click",function(){
+        msg.wain('This is a wain message')
+    })
+    
+    $('#errorBtn').on("click",function(){
+        msg.error('This is a error message')
+    })
+    $("#blackBtn").on("click",function(){
+        msg.error('This is a error message', {
+          theme:'black' //也可以定义
+        })
+    })
+  })()
+      
+
+</script>

@@ -1,0 +1,184 @@
+
+
+
+  .xfocus_02 {
+    width: 100%;
+    height: 100%;
+    position: relative;background-color: #494949;
+  }
+
+  .xfocus_02 .view {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .xfocus_02 .view li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    &:first-child{display:block;}
+    &:hover img {
+      transform: scale(1.1);
+    }
+    a{
+      display:block;
+      img {
+        width: 100%;
+        height: 100%;
+        // border-radius: 3px;
+        transition: all 0.7s;
+      }
+    }
+  }
+  .xfocus_02 ul{
+    height:100%;
+  }
+  .xfocus_02 .text li {
+    border-radius: 3px;
+    display:none;
+    height:100%;
+    padding:0 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#99000000', endColorstr='#99000000');
+    &:first-child{display:block;}
+  }
+
+  .xfocus_02 .text {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .xfocus_02 .text a {
+    color: #fff;
+  }
+
+
+  .xfocus_02 .prev span,
+  .xfocus_02 .next span {
+    position: absolute;
+    top: 0;
+    background: url(../../assets/images/xfous_btn.png);
+    display: inline-block;
+    width: 80px;
+    height: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .xfocus_02 .prev,
+  .xfocus_02 .next {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    margin-top:-34px;
+    width: 40px;
+    height: 68px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#99000000', endColorstr='#99000000');
+  }
+
+  :root .xfocus_02 .prev,
+  :root .xfocus_02 .next {
+    filter: none;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .xfocus_02 .prev:hover,
+  .xfocus_02 .next:hover {
+    height: 68px;
+    text-decoration: none;
+  }
+
+  .xfocus_02 .prev em {
+    color: #fff;
+    font: normal 12px/16px Arial;
+    position: absolute;
+    top: 19px;
+    right: 27px;
+  }
+
+  .xfocus_02 .prev i {
+    color: #fff;
+    font: normal 12px/16px Arial;
+    position: absolute;
+    bottom: 20px;
+    left: 63px;
+    display: inline-block;
+    height:16px;
+  }
+
+  .xfocus_02 .next em {
+    color: #fff;
+    font: normal 12px/16px Arial;
+    position: absolute;
+    top: 19px;
+    right: 62px;
+  }
+
+  .xfocus_02 .next i {
+    color: #fff;
+    font: normal 12px/16px Arial;
+    position: absolute;
+    bottom: 20px;
+    left: 27px;
+    display: inline-block;
+    height:16px;
+  }
+
+  .xfocus_02 .prev {
+    left: 0px;
+  }
+
+  .xfocus_02 .prev span {
+    background-position: 11px 23px;
+    left: 0;
+  }
+
+  .xfocus_02 .next {
+    right: 0px;
+  }
+
+  .xfocus_02 .next span {
+    background-position: 10px -231px;
+    right: 0;
+  }
+
+
+  .xfocus_02 .slider {
+    position:absolute;
+    z-index:3;
+    bottom:50px;
+    left:50%;
+    font-size: 0;
+    text-align:center;line-height: 5px;
+}
+.xfocus_02 .slider li {
+    display:inline-block;
+    margin:0 3px;
+    *display:inline;
+    *zoom:1;
+    width:22px;
+    height:5px;
+    background-color:#555;
+    cursor:pointer
+}
+.xfocus_02 .slider li.current {
+    background-color:#d5d5d5;
+}

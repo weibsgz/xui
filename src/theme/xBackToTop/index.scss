@@ -1,0 +1,47 @@
+
+.feedBackWrap {
+  width: 34px;
+  height: 100px;
+  position: fixed;
+  left: 50%;
+  bottom: 200px;
+  margin-left: 620px;
+
+  .fq {
+      width: 34px;
+      height: 55px;
+      background: url(//asserts.xcarimg.com/resource/xMedia/images/jianyi@2x.png) no-repeat center top;
+      background-size: 100%;
+      background: url(//asserts.xcarimg.com/resource/xMedia/images/jianyi.png) no-repeat center top \9;
+      cursor: pointer;
+
+      a {
+          display: block;
+          width: 34px;
+          height: 55px;
+          color: #444;
+          text-decoration: none;
+          outline: none;
+      }
+  }
+  .fq:hover {
+      width: 34px;
+      height: 55px;
+      background: url(//asserts.xcarimg.com/resource/xMedia/images/jianyi_hover@2x.png) no-repeat center top;
+      background-size: 100%;
+      background: url(//asserts.xcarimg.com/resource/xMedia/images/jianyi_hover.png) no-repeat center top \9;
+  }
+  .feedBackWraphd{
+      margin-top: 6px;
+      width: 34px;
+      height: 35px;
+      background: url(//asserts.xcarimg.com/resource/xMedia/images/top_btn.png) no-repeat center top;
+      cursor: pointer;
+  }
+  .feedBackWraphd:hover {
+      margin-top: 6px;
+      width: 34px;
+      height: 35px;
+      background: url(//asserts.xcarimg.com/resource/xMedia/images/top_btn_hover.png) no-repeat center top;
+  }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>XUI</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+    <style>
+    *{padding:0; margin:0}
+      .testCss {
+        width: 200px;
+        height:200px;
+        color: red;
+        border: 1px solid red;
+      }
+
+       .testCss h2 {
+         margin:0 !important;
+       }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div class="aside">
+        {{include '../../components/leftNav/index.art'}}
+      </div>
+      <div class="main">
+        <div class="doc">
+          <h1>htmltoCanvas</h1>
+          <dl class="introDl">
+            <dt>说明</dt>
+            <dd>
+              此方法可以让使用者传入一段HTML片段或者DOM对象，生成对应的图片，图片有base64和file两种形式，并可下载链接
+            </dd>
+            <dt>引用地址</dt>
+            <dd>
+              <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+              <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+              <p>或者单独引用组件的JS</p>
+              <p>//asserts.xcarimg.com/xui/js/single/xHtmlToCanvas.single.js</p>
+            </dd>
+          </dl>
+
+        <div id="test" class="testCss">
+          <h2>这是写在页面上的DOM</h2>
+          <div>这是DOM的内容</div>
+           <div>这是DOM的内容</div>
+            <div>这是DOM的内容</div>
+             <div>这是DOM的内容</div>
+        </div>
+        <p></p>
+        生成的图片:
+        <div id="imgArea"></div>
+
+        
+      
+         
+        
+
+
+
+        <dl class="introDl">
+          <dt>属性</dt>
+          <dd>
+            <table>
+              <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>默认值</th>
+              </tr>
+              <tr>
+                <td>tpl</td>
+                <td>需要转为图片的HTML</td>
+                <td>string,Dom对象</td>
+                <td> - </td>
+              </tr>
+              <tr>
+                <td>params</td>
+                <td>html2Canvas配置项</td>
+                <td>-</td>
+                <td> http://html2canvas.hertzen.com/configuration </td>
+              </tr>
+              <tr>
+                <td>imgConf.type</td>
+                <td>生成的图片类型</td>
+                <td>string</td>
+                <td>png 可选（jpg,png）</td>
+              </tr>
+            </table>
+          </dd>
+        </dl>
+
+          <dl class="introDl">
+            <dt>示列代码： </dt>
+            <dd>
+              <div class="hor clearfix">
+                <div class="section1"></div>
+              </div>
+
+            
+              <pre>
+        
+                  new xHtmlToCanvas
+                  (
+                    {                    
+                      //tpl可以传入以下三种形式
+                      //document.querySelector("#test")
+                      //$('#test')
+                      //html模板字符串
+                      tpl:document.querySelector("#test"),
+                      params:{
+                          backgroundColor:'gray',
+                          x:$("#test").offset().left,  //设置下当前要生成图片区域所在页面的位置坐标
+                          y:$("#test").offset().top
+                      },
+                      imgConf:{
+                        type:'png'   //模式是PNG的话可以不传
+                      }
+                    },
+                    function ({ base64, file }, download) {
+                        console.log(typeof download, '\r\n', base64, file)
+                        // download()  打开可以下载
+                        const img = new Image()
+                        img.src = base64
+                        $('#imgArea').append(img)
+                          var formdata = new FormData()
+                          formdata.append('file', file)
+                          console.log(formdata.get("file"))
+                      }
+                  )  
+
+              </pre>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const tpl =
+    '<div class="testCss">' +
+    '<h2> this is title</h2>' +
+    '<div> this is content</div>' +
+    '</div>'
+
+
+
+  new xHtmlToCanvas(
+    {
+      //document.querySelector("#test")
+      //$('#test')
+      tpl:$("#test"),
+      params:{
+        backgroundColor:'gray',
+        x:$("#test").offset().left,  //设置下当前要生成图片区域所在页面的位置坐标
+        y:$("#test").offset().top
+      },
+      imgConf:{
+        type:'png'
+      }
+    },
+    function ({ base64, file }, download) {
+      console.log(typeof download, '\r\n', base64, file)
+      // download()   
+       const img = new Image()
+      img.src = base64
+      $('#imgArea').append(img)
+
+        var formdata = new FormData()
+        formdata.append('file', file)
+
+        console.log(formdata.get("file"))
+
+    }
+  )
+  
+</script>

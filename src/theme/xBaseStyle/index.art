@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>基础样式</title>
+	<script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+	<div id="root">
+		<div class="aside">
+			{{include '../../components/leftNav/index.art'}}
+		</div>
+		<div class="main">
+			<div class="doc">
+				<h1>pc 端布局常用样式</h1>
+				<dl class="introDl">
+					<dt>标签</dt>
+					<div>
+						<a class="x-tag" href="#">国内赛事</a>
+						<a class="x-tag" href="#">国内赛事</a>
+						<a class="x-tag " href="#">国内赛事</a>
+					</div>
+				</dl>
+				<dl class="introDl">
+					<dt>常用class 类名</dt>
+					<dd>
+						<p>下列表中，定义pc 端用常用样式的类名，引入样式表中，使用即可
+							 引用地址：//asserts.xcarimg.com/xui/css/xAllCommon.min.css
+						 </p>
+						<div>
+							<table>
+								<tbody>
+									<tr>
+										<th>功能</th>
+										<th>类名</th>
+										<th>说明</th>
+									</tr>
+									<tr>
+										<td>设置字号,设置字号区间[12 ~ 30]px</td>
+										<td>.x-fs字号</td>
+										<td>例如： <span class="x-fs-12">.x-fs-12</span>
+											<span class="x-fs-15">.x-fs-15</span>
+											<span class="x-fs-30">.x-fs-30</span>
+										</td>
+									</tr>
+									<tr>
+										<td>设置字体加粗方式[300，500，800]</td>
+										<td>.x-weight-数值</td>
+										<td>例如： <span class="x-fs-12">.x-weight-300</span>
+											<span class="x-weight-500">.x-weight-500</span>
+											<span class="x-weight-800">.x-weight-800</span>
+										</td>
+									</tr>
+									<tr>
+										<td>设置文字对齐方式, [center, left, right]</td>
+										<td>.x-text-对齐方式</td>
+										<td>例如： <span class="x-dis-inline-block x-text-center" style="width: 150px;">.x-text-center</span>
+											<span class="x-dis-inline-block x-text-left" style="width: 150px;">.x-text-left</span>
+											<span class="x-dis-inline-block x-text-right" style="width: 150px;">.x-text-right</span>
+										</td>
+									</tr>
+									<tr>
+										<td>设置display方式, [block, flex ,inline, inline-block, inline-flex, none]</td>
+										<td>.x-dis-显示方式</td>
+										<td>例如： <span class="x-dis-inline-block" style="width: 150px;">.x-dis-inline-block</span>
+											<span class="x-dis-inline-flex" style="width: 150px;">.x-dis-inline-flex</span>
+											<span class="x-dis-inline-block" style="width: 150px;">.x-dis-inline-block</span>
+										</td>
+									</tr>
+									<tr>
+										<td>设置margin padding间距, [0, 5px ,8px, 10px, 12px, 15px, 14px， 16px, 18px, 20px, 22px 25px, 28px,
+											30px, 50px]</td>
+										<td>.x-margin-间距， .x-m[t,b,l,r]-间距。 x-padding-间距，x-p[t,b,l,r]-间距</td>
+										<td>例如： <span class="x-dis-inline-block x-padding-10">.x-padding-10</span>
+											<span class=" x-dis-inline-block x-margin-10">.x-margin-12</span>
+											<span class=" x-dis-inline-block x-mt-10">.x-mt-15</span>
+											<span class=" x-dis-inline-block x-pb-10">.x-pb-20</span>
+										</td>
+									</tr>
+									<tr>
+										<td>设置color, [blue, black ,gray]</td>
+										<td>.x-color-颜色</td>
+										<td>例如： <span class="x-mr-5 x-color-blue">.x-color-blue</span>
+											<span class="x-mr-5 x-color-black">.x-color-black</span>
+											<span class="x-mr-5 x-color-gray">.x-color-gray</span>
+										</td>
+									</tr>
+									<tr>
+										<td>设置float, [left, right ,clear]</td>
+										<td>.x-fl-方向</td>
+										<td class="x-clearfix">
+											<span class="x-float-l">例如：</span>
+											<span class="x-mr-5 x-float-l">.x-float-l</span>
+											<span class="x-mr-5 x-float-l">.x-float-r</span>
+											<span class="x-mr-5 x-float-r">.x-float-clearfix</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+<script>
+
+</script>

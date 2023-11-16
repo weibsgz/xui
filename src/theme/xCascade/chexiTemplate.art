@@ -1,0 +1,17 @@
+{{if config.chexidom}}
+<div class="selectItem cxx cxxSelectItem_top" >
+    <div class="select"><span>{{config.placeholderChexi}}</span><i></i></div>
+{{else}}
+<div style="right:-{{config.width + 22}}px" class="selectItem cxx cxxSelectItem_top" >
+{{/if}}
+
+    
+    <ol class="options">
+        {{each data as v i}}
+        <li bid="{{v.bid}}" class="disabled"><span>{{v.bname}}</span></li>
+            {{each v.psers as val inx}}
+                <li pserid="{{val.pserid}}" fid="{{val.fid}}"><span>{{val.psname}}</span></li>
+            {{/each}}
+        {{/each}}     
+    </ol>
+</div>

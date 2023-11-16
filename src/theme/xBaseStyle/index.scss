@@ -1,0 +1,12 @@
+@import '../../assets/css/var.scss';
+.x-tag {
+  background: #f2f9ff;
+  color: $blue-color;
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px;
+  margin: 10px;
+  border-radius: 2px;
+  min-width: 76px;
+  min-height: 32px;
+}

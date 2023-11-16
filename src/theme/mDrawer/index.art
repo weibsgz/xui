@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>爱卡汽车触屏端Drawer抽屉</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+ 
+</style>
+<body>
+  <div id="root">2
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+        <h2 class="drawer-chou-ti">Drawer 抽屉</h2>
+        <p class="drawer-chou-title">一些简单的组件并不满足我们的需求, 比如你的表单很长, 亦或是你需要临时展示一些文档, Drawer 拥有级联效果的API, 在 UI 上带来不一样的体验.</p>
+        <p class="ji-ben-yong-fa" style="font-weight:bold">一、基本用法</p>
+        <p class="drawer-chou-title">呼出一个侧边栏实例展示 H5&APP原生体验效果</p>
+        <p style="font-weight:bold">二、效果展示</p>
+        <div class="effectDisplay">
+          <p style="padding-left: 129px;">H5展示</p>
+          <div class="effectDisplay_body">
+             <div class="bindEvnet">唤起Drawer</div>
+          </div>
+        </div>
+        <p style="font-weight:bold;margin-top:20px;margin-bottom:20px;">三、使用教程</p>
+        <div class="drawer-chou-title-border">
+          <!-- h5代码 S-->
+          <ul class="drawer-h5">
+            <li>触屏端如何使用Drawer 抽屉</li>
+            <li>1、安装 npm install -g  nrm </li>
+            <li>2、添加爱卡私有库源地址 nrm  add  xnpm --- http://registry.npm.op.xcar.com.cn:8081/repository/npm-group  切换爱卡镜像源</li><li>3、安装npm install drawer</li><li>4、JS中引入 import drawer from 'drawer'</li>
+            <li>5、SCSS中引入 @import "public/drawer"</li>
+            <li><span style="color:red;">  Tip:  </span>public文件夹存放公共样式</li>
+            <li class="drawer-sili">代码实例</li>
+            <li>
+<pre style="overflow-x:auto;">
+  <code>
+var pbrandApi =  "http://zt.xcar.com.cn/api/carsel/pbrand";//品牌API
+var pbrandName = "选品牌";//一级抽屉标题
+var pseriseApi = "http://zt.xcar.com.cn/api/carsel/pserise";//车系API
+var pseriseName = "选车系";//二级抽屉标题
+//初始化品牌抽屉
+var = branddrawer = new Drawer(pbrandApi, pbrandName, !1, !0, {
+  format: function (rs) {
+      if (rs && rs.status == 1) {
+          var data = rs.data;
+          var arr = [];
+          for (var idx in data) {
+              var _item = data[idx];
+              var _blist = [];
+              for (var jdx in _item) {
+                  var id = _item[jdx].pbid;
+                  _blist.push({
+                      id: id,
+                      text: _item[jdx].pbname,
+                      img:
+                          "//img" +
+                          Math.ceil(Math.random() * 5) +
+                          ".xcarimg.com/PicLib/logo/pl" +
+                          id +
+                          "_160s.png",
+                  });
+              }
+              arr.push({
+                  text: idx,
+                  children: _blist,
+              });
+          }
+          return arr;
+      }
+  },
+});
+//初始化车系抽屉
+var serisedrawer = new Drawer(pseriseApi, pseriseName, !0, !1, {
+  format: function (rs) {
+    if (rs && rs.status == 1) {
+        var data = rs.data;
+        var arr = [];
+        for (var i in data) {
+            //console.log(data[i])
+            var _item = data[i];
+            var _it = {
+                text: _item.bname,
+                children: [],
+            };
+            for (var j in _item.pslist) {
+                var _pse = _item.pslist[j][0] || _item.pslist[j];
+                // var _pprice=_pse.pmprice&&_pse.pmprice.max_price?(_pse.pmprice.min_price+'-'+_pse.pmprice.max_price):0;
+                var _pprice = pprice();
+                function pprice() {
+                    if (
+                        _pse.pmprice &&
+                        _pse.pmprice.max_price == _pse.pmprice.min_price &&
+                        _pse.pmprice.max_price != 0
+                    ) {
+                        return _pse.pmprice.max_price;
+                    } else if (
+                        _pse.pmprice &&
+                        _pse.pmprice.max_price != _pse.pmprice.min_price &&
+                        _pse.pmprice.max_price != 0
+                    ) {
+                        return (
+                            _pse.pmprice.min_price +
+                            "-" +
+                            _pse.pmprice.max_price
+                        );
+                    } else {
+                        return 0;
+                    }
+                }
+                _it.children.push({
+                    id: _pse.pserid,
+                    text: _pse.gname ? _pse.gname : _pse.psname,
+                    price: _pprice || 0,
+                    serid: _pse.serid,
+                    img:
+                        "//img" +
+                        Math.ceil(Math.random() * 5) +
+                        ".xcarimg.com/PicLib/s/s" +
+                        _pse.serid +
+                        "_240.jpg",
+                    gnlist: _pse.gn_list ? _pse.gn_list : [],
+                    gnlistcount: _pse.gn_list_count
+                        ? _pse.gn_list_count
+                        : "",
+                });
+            }
+            if (_it.children[0]) arr.push(_it);
+        }
+        return arr;
+    }
+  },
+});
+//关闭抽屉方法
+function drawerHide(drs){   
+    for (var i in drs) {
+        drs[i].hide();
+    }
+}
+//调用抽屉&返回参数
+$(docoment).find("dom").on('click',function(){
+    branddrawer.request(function (rs) {
+      if (rs.code == 1) {
+          return false;
+      }
+      serisedrawer.formdata = {
+          pbid: rs.id,
+          xst: "2",
+      };
+      serisedrawer.request(function (rs) {
+          if (rs.code == 1) {
+              drawerHide([branddrawer]);
+              return false;
+          }
+          drawerHide([branddrawer,serisedrawer]);
+          let _pname = rs.text,
+              _pid = rs.id;
+          //当前数据
+          console.log(_pname)//车系名称
+          console.log(_pid)//车系id
+      });
+  });
+});
+  </code>
+</pre>
+            </li>
+          </ul>
+          <!-- h5代码 E-->
+          <!-- APP代码 S-->
+          <div style="display:none" class="drawer-app"></div>
+          <!-- APP代码 E-->
+        </div>
+        <div class="doc">
+          <dl class="introDl">
+            <dt>属性</dt>
+            <dd>
+              <table>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>默认值</th>
+                </tr>
+                <tr>
+                  <td>pbrandApi</td>
+                  <td>品牌API接口</td>
+                  <td>string</td>
+                  <td>无</td>
+                </tr>
+                <tr>
+                  <td>pbrandName</td>
+                  <td>品牌title</td>
+                  <td>string</td>
+                  <td>无</td>
+                </tr>
+                <tr>
+                  <td>pseriseApi</td>
+                  <td>车系API接口</td>
+                  <td>string</td>
+                  <td>无</td>
+                </tr>
+                <tr>
+                  <td>pseriseName</td>
+                  <td>车系title</td>
+                  <td>string</td>
+                  <td>无</td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="introDl">
+              <dt>方法</dt>
+              <dd>
+                <table>
+                  <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>                 
+                  </tr>
+                  <tr>
+                    <td>drawerHide</td>
+                    <td>销毁抽屉</td>
+                    <td>无</td>                
+                  </tr>
+                  <tr>
+                    <td>branddrawer.request</td>
+                    <td>品牌回调</td>
+                    <td>品牌id&品牌名称</td>                
+                  </tr>
+                  <tr>
+                    <td>serisedrawer.request</td>
+                    <td>车系回调</td>
+                    <td>车系id&车系名称</td>                
+                  </tr>
+                </table>
+              </dd>
+          </dl>
+        </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+
+</script>

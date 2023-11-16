@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>爱卡汽车触屏端xplayer</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+ 
+</style>
+<body>
+  <div id="root">2
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+        <h2 class="drawer-chou-ti">xplayer插件</h2>
+        <p class="drawer-chou-title">在实际开发中我们会遇到很多特别的场景</p>
+        <p class="ji-ben-yong-fa" style="font-weight:bold">一、基本用法</p>
+        <p class="drawer-chou-title">看下我们的xplayer如何使用</p>
+        <p style="font-weight:bold">二、效果展示</p>
+        <div class="effectDisplay">
+          <p style="padding-left: 129px">H5展示</p>
+          <div class="effectDisplay_body">
+            <div class="bindEvnet">播放视频</div>
+            <div class="video"></div>
+          </div>
+        </div>
+        <p style="font-weight:bold;margin-top:20px;margin-bottom:20px;">三、使用教程</p>
+        <div class="drawer-chou-title-border">
+          <!-- h5代码 S-->
+          <ul class="drawer-h5">
+            <li>触屏端如何使用tip</li>
+            <li>1、安装 npm install -g  nrm </li>
+            <li>2、添加爱卡私有库源地址 nrm  add  xnpm --- http:\/\/registry.npm.op.xcar.com.cn:8081\/repository\/npm-group  切换爱卡镜像源</li>
+            <li>3、安装npm install xplayer;</li>
+            <li>4、JS中引入 import xplayer from "./xplayer";</li>
+            <li><span style="color:red;">  Tip:  </span>public文件夹存放公共样式</li>
+            <li class="drawer-sili">代码实例</li>
+            <li>
+<pre style="overflow-x:auto;">
+  <code>
+/*js逻辑*/
+new Xplayer({
+  container: $('.video')[0],容器
+  screenshot: true,开启截图，如果开启，视频和视频封面需要允许跨域
+  autoplay: true,自动播放
+  theme: '#FADFA3',  主题色
+  video: {
+    url: 'https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4',视频链接
+    pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',视频封面
+  }
+});   
+  </code>
+</pre>              
+            </li>
+          </ul>
+          <!-- h5代码 E-->
+          <!-- APP代码 S-->
+          <div style="display:none" class="drawer-app"></div>
+          <!-- APP代码 E-->
+        </div>
+        <div class="doc">
+          <dl class="introDl">
+            <dt>属性</dt>
+            <dd>
+              <table>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>默认值</th>
+                </tr>
+                <tr>
+                  <td>container</td>
+                  <td>播放器容器元素</td>
+                  <td>字符串</td>
+                  <td>暂无</td>
+                </tr>
+                <tr>
+                  <td>live</td>
+                  <td>开启直播模式, 见#直播</td>
+                  <td>布尔值</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>autoplay</td>
+                  <td>视频自动播放</td>
+                  <td>布尔值</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>loop</td>
+                  <td>视频循环播放</td>
+                  <td>布尔值</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>screenshot</td>
+                  <td>开启截图，如果开启，视频和视频封面需要允许跨域</td>
+                  <td>布尔值 </td>
+                  <td>false</td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+        </div>
+        tip:更多配置<a  style="color:#409eff" href="http://dplayer.js.org/zh/guide.html#%E5%8F%82%E6%95%B0" target="_blank">请查看</a>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+
+</script>

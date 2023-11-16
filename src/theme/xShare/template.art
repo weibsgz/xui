@@ -1,0 +1,25 @@
+<div data-tag="share_2" class="bdsharebuttonbox bdshare-button-style0-32 share" data-bd-bind="1565336275232"
+  style="right: {{right+'px'}}; bottom: {{bottom+'px'}}">
+  <ul>
+    <li class="li_title">分享</li>
+    <li class="wx" id="wx">
+      <a href="javascript:;"></a>
+      <div class="li_box_position">
+        <div class="li_box">
+          <div class="top_title">
+            扫二维码 分享朋友圈
+          </div>
+          <img src="//icon.xcar.com.cn/2011newcar/images/auto/ps_logo.jpg" alt="">
+          <div class="bottom_title">
+            <a target="_blank" href="http://hezuo.xcar.com.cn/index.php?partner=weixin_share&amp;url=http%3A%2F%2Fwww.xcar.com.cn%2Fbbs%2Fviewthread.php%3Ftid%3D90925220%23zoneclick%3D125429&amp;title=%E5%86%8D%E6%AC%A1%E5%87%BA%E5%8F%91%EF%BC%8C%E5%BE%81%E9%80%94%E8%B7%A8%E6%AC%A7%E4%BA%9A%E4%B9%8B%E6%97%85_%E7%A9%BF%E8%B6%8A%E8%AE%BA%E5%9D%9B_%20XCAR%20%E7%88%B1%E5%8D%A1%E6%B1%BD%E8%BD%A6%E4%BF%B1%E4%B9%90%E9%83%A8">还不知道怎么用？</a>
+          </div>
+          <i class="icon-share-jt2x icon-share-jt"></i>
+        </div>
+      </div>
+    </li>
+    <li class=" kj"><a href="javascript:;" class="bds_qzone" title="分享到QQ空间" data-cmd="qzone"></a></li>
+    <li class=" wb"><a href="javascript:;" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a></li>
+    <li class=" qq"><a href="javascript:;" class="bds_QQ" title="分享到QQ" data-cmd="sqq"></a></li>
+  </ul>
+
+</div>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tab 栏</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+      <div class="doc">
+        <h1>tab栏切换加载feed流</h1>
+        <dl class="introDl">
+          <dt>引用地址</dt>
+          <dd>
+            <h4>1. 全部插件引入</h4>
+            <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+            <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+            <h4>2. 单独插件引入</h4>
+            <p>//asserts.xcarimg.com/xui/css/xTab.min.css</p>
+            <p>//asserts.xcarimg.com/xui/js/single/xTab.single.js</p>
+          </dd>
+        </dl>
+        <dl class="introDl">
+          <dd>
+            <h6>HTML页面结构：</h6>
+            <pre>&lt;!-- x-tab-box为标签容器默认样式，active为活动标签 --&gt;<br/>&lt;!-- 接口参数说明：后端接口需要的参数使用自定义属性的方式定义在标签上，格式为 data-key=value--&gt;<br/>&lt;!-- data-page 页码(必填项) --&gt;<br/>&lt;!-- data-limit 每页条数(非必填，默认: 20) --&gt;<br/>&lt;!-- data-tpl 每个标签列表对应的渲染模板id（非必填，执行规则见注释），其他参数根据接口需求添加 --&gt;<br/>&lt;!-- x-tab-list-box为feed流容器默认样式，active为当前活动列表 --&gt;
+              &lt;ul class="x-tab-box clearfix"&gt;
+                &lt;li class="active" data-tpl="tpl1" data-page="2" data-limit="20"&gt;推荐&lt;/li&gt;
+                &lt;li data-tpl="tpl2" data-page="1" data-limit="20"&gt;关注&lt;/li&gt;
+                &lt;li data-tpl="tpl3" data-page="1" data-limit="20"&gt;24H热门&lt;/li&gt;
+                &lt;li data-tpl="tpl4" data-page="1" data-limit="20"&gt;试乘试加&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;div class="x-tab-list-box" &gt;
+                &lt;ul class="active"&gt;&lt;/ul&gt;
+                &lt;ul&gt;&lt;/ul&gt;
+                &lt;ul&gt;&lt;/ul&gt;
+                &lt;ul&gt;&lt;/ul&gt;
+              &lt;/div&gt;
+            </pre>
+            <h6>js使用示例：</h6>
+            <pre>
+              var tab1 = new xTab({
+                tabBox: '[data-tab=feed]', 
+                listBox: '[data-list=feed]',
+                listUrl: '//culture.xcar.com.cn/get_list_api/index',
+                // renderType: 1, // 列表渲染方式: 1 -> 切换标签当前列表后追加内容(default)， 0 -> 切换标签加载第一页最新数据
+                // emptyMsg: '', // 暂无内容提示信息
+                tpl: function(list){
+                  return list.map(function(item){
+                    return  '&lt;li&gt;'+item.id+'-----'+item.columns.title+'&lt;/li&gt;'
+                  }).join(' ')
+                }
+              })
+            </pre>
+            <h6>接口响应数据结构</h6>
+            <pre>
+              // 响应数据结构
+              {
+                status: 1, // 必填项，响应状态码, 1 -> 表示成功，其他 -> 表示失败
+                msg: '成功', // 必填项，响应提示信息
+                list: [] | {}, // 必填项，响应数据列表
+              }
+            </pre>
+          </dd>
+          <dd>
+            <p>注: 渲染模板使用的优先级: <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、如果当前tab标签上存在 data-tpl 自定义属性参数，则优先使用此参数，不存在则判断 2、<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、如果使用 new 实例化时传入了 tpl 参数，则使用此参数。<br/>
+            </p>
+          </dd>
+        </dl>
+        <dl class="introDl">
+          <dt>实例化参数</dt>
+          <table>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>             
+              <th>可选值</th>             
+              <th>默认值</th>                 
+              <th>备注</th>                 
+            </tr>
+            <tr>
+              <td>tabBox</td>
+              <td>标签容器</td>
+              <td>String</td>                         
+              <td>——</td>                         
+              <td>——</td>            
+              <td>必填项</td>            
+            </tr>
+            <tr>
+              <td>listBox</td>
+              <td>feed列表容器</td>
+              <td>String</td>                         
+              <td>——</td>                         
+              <td>——</td>            
+              <td>必填项</td>            
+            </tr>
+            <tr>
+              <td>listUrl</td>
+              <td>接口地址</td>
+              <td>String</td>                         
+              <td>——</td>                         
+              <td>——</td>            
+              <td>必填项</td>            
+            </tr>
+            <tr>
+              <td>renderType</td>
+              <td>列表渲染方式</td>
+              <td>Number</td>                         
+              <td>1|0</td>                         
+              <td>1</td>            
+              <td>
+                非必填项<br/>
+                1 -> 切换标签当前列表后追加内容<br/>
+                0 -> 切换标签加载第一页最新数据
+              </td>            
+            </tr>
+            <tr>
+              <td>emptyMsg</td>
+              <td>暂无内容提示信息</td>
+              <td>String</td>                         
+              <td></td>                         
+              <td>&lt;div class="no_data"&gt;&lt;/div&gt;&lt;p&gt;暂无内容&lt;/p&gt;</td>            
+              <td>
+                非必填项</br>
+                可自定义模板
+              </td>            
+            </tr>
+            <tr>
+              <td>tpl</td>
+              <td>数据模板</td>
+              <td>String | Function</td>                         
+              <td>——</td>                         
+              <td>null</td>            
+              <td>
+                非必填项<br/>
+                1. 为字符串时，代表模板id<br/>
+                2. 为方法时，参数list为接口返回的数据结果数组，此方法需要有返回结果可插入页面的字符串或者DOM对象，见js使用示例
+              </td>            
+            </tr>
+          </table>
+        </dl>
+        <dl class="introDl">
+          <dt>实例方法</dt>
+          <table>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>             
+              <th>参数</th>                            
+              <th>返回值</th>                            
+              <th>备注</th>                            
+            </tr>
+            <tr>
+              <td>addTab</td>
+              <td>向标签容器内添加标签</td>
+              <td>Function</td>
+              <td>String | HTMLElement</td>
+              <td>——</td>
+              <td>参数为字符串或者Dom对象，feed流列表容器会自动同步<br/>
+                用法：<br/>
+                &nbsp;&nbsp;&nbsp;1. 可用在空标签容器内<br/>
+                &nbsp;&nbsp;&nbsp;2. 可用在已有标签的容器内追加标签
+              </td>
+            </tr>
+            <tr>
+              <td>beforeAjax</td>
+              <td>接口请求之前处理逻辑</td>
+              <td>Function</td>
+              <td>——</td>
+              <td>——</td>
+              <td>初始化加载状态，清除列表数据，重置部分请求参数</td>
+            </tr>
+            <tr>
+              <td>ajax</td>
+              <td>请求接口获取数据</td>
+              <td>Function</td>
+              <td>type</td>
+              <td>——</td>
+              <td>type：请求类型：get(default)|post</td>
+            </tr>
+            <tr>
+              <td>ajaxSuccess</td>
+              <td>请求接口成功之后处理逻辑</td>
+              <td>Function</td>
+              <td>res</td>
+              <td>——</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>renderDom</td>
+              <td>根据数据模板生成Dom结构</td>
+              <td>Function</td>
+              <td>tpl，list</td>
+              <td>String</td>
+              <td>
+                tpl: 代表渲染模板，执行规则见注解<br/>
+                list: 接口响应成功的数据结果
+              </td>
+            </tr>
+            <tr>
+              <td>getAttr</td>
+              <td>获取指定Dom对象的自定义属性</td>
+              <td>Function</td>
+              <td>dom</td>
+              <td>Object</td>
+              <td>
+                dom为HTMLEment
+              </td>
+            </tr>
+            <tr>
+              <td>setAttr</td>
+              <td>设置指定Dom对象的自定义属性</td>
+              <td>Function</td>
+              <td>dom, attrs</td>
+              <td>Object</td>
+              <td>
+                dom为HTMLEment<br/>
+                attrs为自定义属性，不需要加 data- 前缀，会自动补全
+              </td>
+            </tr>
+            <tr>
+              <td>refresh</td>
+              <td>按指定参数刷新当前列表并重置其他标签列表参数为初始化默认值</td>
+              <td>Function</td>
+              <td>params</td>
+              <td>——</td>
+              <td>
+                params为自定属性组成的对象（key不需要加‘data-’前缀）
+              </td>
+            </tr>
+          </table>
+        </dl>
+        <dl class="introDl">
+          <dt>示例：</dt>
+          <dd class="clearfix">
+            <ul class="x-tab-box clearfix" data-tab="feed">
+              <li class="x-float-l x-color-black x-fs-16 x-padding-10 active" data-tpl="" data-cname="recommend" data-page="2" data-limit="20" data-type="5">推荐</li>
+              <li class="x-float-l x-color-black x-fs-16 x-padding-10" data-tpl="" data-cname="official" data-page="1" data-limit="20" data-type="5">关注</li>
+              <li class="x-float-l x-color-black x-fs-16 x-padding-10" data-tpl="" data-cname="party" data-page="1" data-limit="20" data-type="5">24H热门</li>
+              <li class="x-float-l x-color-black x-fs-16 x-padding-10" data-tpl="" data-cname="activity" data-page="1" data-limit="20" data-type="5">试乘试加</li>
+            </ul>
+            <div class="x-tab-list-box" data-list='feed'>
+              <ul class="active">
+                <li>首屏 start</li>
+                <li>94815819-----本田讴歌RDX作业</li> 
+                <li>94815383-----哈弗H2驰骋在高山峻岭间</li> 
+                <li>94815151-----住在新冠肺炎确诊疑似30+的小区，是种什么体验？</li> 
+                <li>94813438-----参加年底的启辰亲子活动</li> 
+                <li>94813405-----一场友谊，车友请，亲子活动</li> 
+                <li>94813402-----喜欢的车都老了</li> 
+                <li>94812769-----2014款3.0顶配胖头鱼，改后排屏并且和原车多媒体相连</li> 
+                <li>94811504-----探界齐开拓-鼠年威武畅通无阻</li> 
+                <li>94810581-----商务家用两不误，亚洲龙使用小心得</li> 
+                <li>94810034-----沃们不一样的春节</li> 
+                <li>94808104-----【庆新春】   明锐向光而行，期待春暖花开</li> 
+                <li>94807925-----【新春为爱 行我路】小卡伴我安全回家过年</li> 
+                <li>94807423-----【领界陪我过大年】新年到财运来领界陪我过新年</li> 
+                <li>94807396-----成功入坑，解毒了</li> 
+                <li>94806762-----选择S90的原因之四（cleanzone）疫情期间的庆幸</li> 
+                <li>94806429-----冬日暖阳中，与哈弗F7x感受温暖</li> 
+                <li>94805447-----路上，一来车少，二来全是本地车牌</li>
+                <li>首屏 end</li>
+              </ul>
+              <ul></ul>
+              <ul></ul>
+              <ul></ul>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var tab = new xTab({
+    tabBox: '[data-tab=feed]', 
+    listBox: '[data-list=feed]',
+    listUrl: '//culture.xcar.com.cn/get_list_api/index',
+    // renderType: 0, // 列表渲染方式: 1 -> 切换标签当前列表后追加内容， 0 -> 切换标签加载第一页最新数据
+    // emptyMsg: '', // 暂无内容提示信息
+    tpl: function(list){
+      console.log(this.config.params)
+      return list.map(function(item){
+       return  '<li>'+item.id+'-----'+item.columns.title+'</li>'
+      }).join(' ')
+    }
+  })
+  console.log(tab)
+
+</script>

@@ -1,0 +1,109 @@
+<div id="left-nav">
+  <div class="logo">
+    <img src="../../assets/images/logo.png">
+  </div>
+  <div class="nav">
+    <p class="nav-title">关于</p>
+    <ul class="nav-list">
+      <li data-href="index" class="selected">介绍</li>
+      <li data-href="index2">开始</li>
+    </ul>
+    <p class="nav-title">工具类函数</p>
+    <ul class="nav-list">
+      <li data-href="xTools">工具类函数</li>
+    </ul>
+    <div class="nav-menu actvie">
+      <p class="menu-title">XCAR-PC组件</p>
+      <div class="nav-menu-content">
+        <!-- <p class="nav-title">基础组件</p> -->
+        <ul class="nav-list">
+          <!-- <li data-href="xButton">按钮</li> -->
+          <li data-href="xBaseStyle">基础样式类名</li>
+          <li data-href="xNav">导航</li>
+          <li data-href="xValidate">表单验证</li>
+          <li data-href="xMessage">全局提示</li>
+          <li data-href="xSpin">Spin 加载中</li>
+            <li data-href="xUploader">上传文件</li>
+          <li data-href="xCascade">级联下拉</li>
+          <li data-href="xFocus">焦点图</li>
+          <li data-href="xShare">分享</li>
+          <li data-href="xBackToTop">回到顶部</li>
+          <li data-href="xTab">Tab 栏</li>
+          <li data-href="xProCity">省市下拉</li>
+          <!-- <li data-href="xTips">tip 提示</li> -->
+          <li data-href="xStickTop">滚动右侧置顶</li>
+          <li data-href="xHtmlToCanvas">htmltoCanvas</li>
+          <li data-href="xChangeYourBrowser">提示IE不兼容</li>
+        </ul>
+        <!-- <p class="nav-title">业务组件/特效</p> -->
+      </div>
+    </div>
+    <div class="nav-menu">
+      <p class="menu-title">XCAR-M组件</p>
+      <div class="nav-menu-content">
+        <ul class="nav-list">
+          <li data-href="mDrawer">Drawer 抽屉</li>
+          <li data-href="mOpenApp">OpenApp 唤起</li>
+          <li data-href="mReport">Report 统计</li>
+          <li data-href="mLazyload">Lazyload 懒加载</li>
+          <li data-href="mCookie">Cookie 设置及存储缓存</li>
+          <li data-href="mPikaday">Pikaday 时间插件</li>
+          <li data-href="mGotop">Gotop 返回顶部</li>
+          <li data-href="mSwiper">Swiper 焦点图</li>
+          <li data-href="mTip">Tip 公用提示框</li>
+          <li data-href="mCheckmobile">CheckMobile 手机号校验</li>
+          <li data-href="mShare">Nshare分享</li>
+          <li data-href="mXplayer">Xplayer播放器</li>
+          <li data-href="mGovern">Govern 控制回退历史</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.nav-list li').removeClass('selected')
+  var path = window.location.pathname
+  var reg = /\/(.*)\.html/
+  var navPath = path.match(reg)
+  var pathName = navPath === null ? 'index' : navPath[1]
+  var excludeArr = ['index', 'index2', 'xTools']
+
+
+
+  console.log('pathName', pathName)
+  $('.nav-list [data-href='+ pathName +']').addClass('selected')
+
+  //收起其他模块菜单
+  $('.nav-list [data-href='+ pathName +']').parents('.nav-menu').siblings('.nav-menu').children('.nav-menu-content').hide()
+
+  for (var i = 0; i < excludeArr.length; i++) {
+    console.log(pathName, excludeArr[i])
+    if (pathName == excludeArr[i]) {
+      $('.nav-menu').children('.nav-menu-content').hide()
+    }
+  }
+
+
+
+  $('.nav-list li').click(function () {
+    var currentHref = $(this).attr('data-href')
+    window.location.href = './'+ currentHref +'.html'
+
+
+  })
+
+  $(".nav-menu .menu-title").on('click', function () {
+    // $(this).parent('.nav-menu').addClass('active').siblings('.nav-menu').removeClass('active').children('.nav-menu-content').slideUp()
+
+    var menu = $(this).next('.nav-menu-content');
+    // console.log(menu.is(":visible"))
+    if (menu.is(":visible")) {
+      menu.slideUp()
+    }
+    else {
+      menu.slideDown()
+    }
+  })
+
+</script>

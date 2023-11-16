@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+  <title>XCFE-UI</title>
+</head>
+
+<body>
+  <div id="root" class="clearfix">
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+      <div class="doc" style="font-size:16px;!important">
+        <h1>爱卡UI组件库介绍</h1>
+        <h2>一、介绍</h2>
+        <dl class="introDl">
+          <dt>开发时间</dt>
+          <dd>2019.12</dd>
+        </dl>
+        <dl class="introDl">
+          <dt>开发目的</dt>
+          <dd>
+            作为爱卡前端的UI组件库,担负着为我们前端开发人员提供一个可快速参考代码
+            的地方，并肩负着文档的作用。
+          </dd>
+        </dl>
+        <dl class="introDl">
+          <dt>使用技术</dt>
+          <dd>
+            <table>
+              <tr>
+                <th>使用技术</th>
+                <th>说明</th>
+              </tr>
+              <tr>
+                <td>webpack4</td>
+                <td>作为项目构建的架构</td>
+              </tr>
+              <tr>
+                <td>gulp</td>
+                <td>合并打包JS，CSS用，已合并到build命令，无需关心</td>
+              </tr>
+              <tr>
+                <td>artTemplate</td>
+                <td>所有页面以.art为扩展名，目的是方便组件化，方便include</td>
+              </tr>
+              <tr>
+                <td>jquery</td>
+                <td>基于jquery</td>
+              </tr>
+              <tr>
+                <td>sass</td>
+                <td>css预编译语言</td>
+              </tr>
+            </table>
+          </dd>
+        </dl>
+        <dl class="introDl">
+          <dt>构建工程（PC端）</dt>
+          <dd>
+            <p>项目构建可以构建到<span class="red">测试环境</span>、<span class="red">生产环境</span>两个环境中。</p>
+            <p style="font-weight:bold;color:#0088ff">一、测试环境构建流程：</p>
+            <p>1、<span class="red">构建文档：</span>到jenkins 中找到 <span
+                class="red">WEB-FE_Test_xui_Release</span>构建此任务，将静态资源打包出来，可以选择前端静态服务器任何一台都可以。打包完成后，可以在 此网站<a
+                href="http://xui.xcar.com.cn/" target="_blank">http://xui.xcar.com.cn/</a>预览效果。 （需要绑定构建的HOST）</p>
+            <p>2、<span class="red">构建资源文件：</span>到jenkins 中找到 <span class="red">WEB-FE_Test_Asserts-xui_Release</span>构建此任务，将静态资源打包到 <a
+                href="http://asserts.xcarimg.com/xui/css/文件路径名.min.css">http://asserts.xcarimg.com/xui/文件路径名</a>
+              静态服务器中，可以选择前端静态服务器任何一台都可以。（需要绑定构建的HOST）</p>
+            <p>3、打包后，访问资源时，需要绑定构建服务器的host。</p>
+            <p style="font-weight:bold;color:#0088ff">二、线上环境构建流程：</p>
+            <p>1、<span class="red">构建文档：</span>到jenkins 中找到 <span class="red">WEB-FE_Product_xui_Release</span>构建此任务，将把打包出来的js、css 静态资源发布到线上。（需要绑定构建的HOST）</p>
+            <p>2、<span class="red">构建资源文件：</span>到jenkins 中找到 <span class="red">WEB-FE_Product_Asserts-xui_Release</span>构建此任务，将把打包出来的js、css 静态资源发布到线上。</p>
+
+            <p style="font-weight:bold;color:#0088ff">三、资源引用（重要！！！）</p>
+            <p>
+              <p>1、确保页面引入了jquery<a
+                  href="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js">//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js</a>。此文件包括所有组件打包出来的样式文件。
+              </p>
+              <p>2、引用 css 文件时，直接引用<a
+                  href="//asserts.xcarimg.com/xui/css/x-ui.min.css">//asserts.xcarimg.com/xui/css/x-ui.min.css</a>。此文件包括所有组件打包出来的样式文件。
+              </p>
+              <p>
+                当你不需要引用x-ui 组件的样式，x-ui 提供一个全局重置样式和公共式样式的css(<a href="./xBaseStyle.html?index=4">文档</a>) <br />
+                引用地址：
+                <a href="//asserts.xcarimg.com/xui/css/xAllCommon.min.css">//asserts.xcarimg.com/xui/css/xAllCommon.min.css</a>
+              </p>
+            </p>
+            <p>3、引用 js 文件时，可以分为两种引用方式</p>
+            <p>第一种是，按需引用你所需要组件文件。如：<a
+              href="//asserts.xcarimg.com/xui/js/single/组件名.single.js">//asserts.xcarimg.com/xui/js/single/组件名.single.js</a>。
+              (强烈推荐！！)
+            </p>
+            <p>第二种是，引用全部组件文件</p>
+            <p><a href="//asserts.xcarimg.com/xui/js/x-ui.min.js">//asserts.xcarimg.com/xui/js/x-ui.min.js</a></p>
+            <p>引入后，可以直接调用打包后的任意组件。</p>
+         
+            <p>4、额外给提供一个工具类函数库，这个库可以是开发本组件库用到的函数类，单独打包出来提供大家使用</p>
+            <p>如果只想用详见菜单栏工具类函数</p>
+            <p><a
+              href="//asserts.xcarimg.com/xui/js/utils.min.js">//asserts.xcarimg.com/xui/js/utils.min.js</a>。</p>
+          </dd>
+        </dl>
+        <dl class="introDl">
+          <dt>目录结构</dt>
+          <dd>
+            <img src="../../assets/images/ui.png" />
+          </dd>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+
+</script>

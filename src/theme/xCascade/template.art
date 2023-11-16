@@ -1,0 +1,34 @@
+<!-- <div class="x-main_select_warp"> -->
+    <!-- <div class="selectItem cx cxSelectItem_top disabled"> -->
+        <!-- <div class="select">
+            <span>{{config.placeholder}}</span>
+            <i></i>
+        </div> -->
+      
+     <div class="cxOpt" style="display:{{config.expand?'block':''}}">    
+            <ul class="zm">
+                {{each data as v i}}
+                    <li class="{{i}}">{{i}}</li>
+                {{/each}}
+            </ul>        
+            <ol class="options" style="width:{{config.width - 50}}px"> 
+                {{each data as v i}}  
+                <li class="{{i}} lizm disabled"><span><i>{{i}}</i></span></li> 
+                    {{each v as val inx}}  
+                    <li pid="{{val.pbid}}" pcls="{{i}}">
+                        <span>
+                            {{if config.showImg}}
+                            <img src="{{val.icon}}" title="{{val.pbname}}"/>
+                            {{/if}}
+                            <i title="{{val.pbname}}">{{val.pbname}}</i>
+                        </span>
+                        </li>                                                       
+                    {{/each}}
+                {{/each}}
+            </ol>
+        </div>
+    <!-- </div> -->
+<!-- </div> -->
+
+
+

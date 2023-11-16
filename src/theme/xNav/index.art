@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>XUI</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+
+    <style></style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div class="aside">
+        {{include '../../components/leftNav/index.art'}}
+      </div>
+      <div class="main">
+        <div class="doc">
+          <h1>常用导航样式</h1>
+          <dl class="introDl">
+            <dt>说明</dt>
+            <dd>页面引用资源后,你可在页面创建一个空的容器,通过调用初始化级联下拉框,级联下拉框自适应容器宽度</dd>
+            <dt>引用地址</dt>
+            <dd>
+              <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+              <p>或者直接引入x-ui 提供一个全局重置样式和公共式样式的css</p>
+              <p>//asserts.xcarimg.com/xui/css/xAllCommon.min.css</p>
+            </dd>
+            <dd>
+              <pre>
+                &lt;ul class=&quot;x-nav&quot;&gt;
+                  &lt;li&gt;&lt;a&gt;xxx&lt;/a&gt;&lt;/li&gt;
+                   ...
+                &lt;/ul&gt;
+              </pre>
+            </dd>
+          </dl>
+        </div>
+
+        <ul class="x-nav">
+          <li>
+            <a
+              href="//xmeeting.xcar.com.cn/"
+              target="_blank"
+              onclick="clicklog('126414','','')"
+              >嘉年华</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://club.xcar.com.cn/diy/"
+              target="_blank"
+              onclick="clicklog('126418','','')"
+              >旅行</a
+            >
+          </li>
+          <li class="cur">
+            <a
+              href="//culture.xcar.com.cn/gaizhuang/"
+              onclick="clicklog('126421','','')"
+              >改装</a
+            >
+          </li>
+          <li class="">
+            <a
+              href="//culture.xcar.com.cn/saishi/"
+              onclick="clicklog('126417','','')"
+              >赛事</a
+            >
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="http://topic.xcar.com.cn/201901/formulae/"
+              onclick="clicklog('126427','','')"
+              >FE</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://motor.xcar.com.cn/"
+              target="_blank"
+              onclick="clicklog('126420','','')"
+              >摩托车</a
+            >
+          </li>
+          <li>
+            <a
+              href="//xtv.xcar.com.cn"
+              target="_blank"
+              onclick="clicklog('126415','','')"
+              >视频</a
+            >
+          </li>
+          <li class="">
+            <a
+              href="//culture.xcar.com.cn/shijue/"
+              onclick="clicklog('126416','','')"
+              >视觉</a
+            >
+          </li>
+          <li class="">
+            <a
+              href="//culture.xcar.com.cn/daren/"
+              onclick="clicklog('126419','','')"
+              >达人</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://club.xcar.com.cn/active/"
+              target="_blank"
+              onclick="clicklog('126422','','')"
+              >聚会</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://mall.xcar.com.cn/"
+              target="_blank"
+              onclick="clicklog('126423','','')"
+              >商城</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://club.xcar.com.cn/active/"
+              target="_blank"
+              onclick="clicklog('126422','','')"
+              >聚会</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://mall.xcar.com.cn/"
+              target="_blank"
+              onclick="clicklog('126423','','')"
+              >商城123</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script></script>

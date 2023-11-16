@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>爱卡汽车触屏端checkmobile</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+ 
+</style>
+<body>
+  <div id="root">2
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+        <h2 class="drawer-chou-ti">checkMobile插件</h2>
+        <p class="drawer-chou-title">在实际开发中我们会遇到很多特别的场景</p>
+        <p class="ji-ben-yong-fa" style="font-weight:bold">一、基本用法</p>
+        <p class="drawer-chou-title">看下我们的checkMobile如何使用</p>
+        <p style="font-weight:bold">二、效果展示</p>
+        <div class="effectDisplay">
+          <p style="padding-left: 129px">H5展示</p>
+          <div class="effectDisplay_body">
+             <div class="effectDisplay_bg">
+                <ul class="effectDisplay_box">
+                </ul>
+             </div>
+          </div>
+        </div>
+        <p style="font-weight:bold;margin-top:20px;margin-bottom:20px;">三、使用教程</p>
+        <div class="drawer-chou-title-border">
+          <!-- h5代码 S-->
+          <ul class="drawer-h5">
+            <li>触屏端如何使用checkMobile</li>
+            <li>1、安装 npm install -g  nrm </li>
+            <li>2、添加爱卡私有库源地址 nrm  add  xnpm --- http:\/\/registry.npm.op.xcar.com.cn:8081\/repository\/npm-group  切换爱卡镜像源</li>
+            <li>3、安装npm install checkMobile;</li>
+            <li>4、JS中引入 import checkMobile from 'checkMobile';</li>
+            <li><span style="color:red;">  Tip:  </span>public文件夹存放公共样式</li>
+            <li class="drawer-sili">代码实例</li>
+            <li>
+<pre style="overflow-x:auto;">
+  <code>
+/*js逻辑*/
+checkMobile(num); // 符合规则返回true 不符合返回false 
+  </code>
+</pre>              
+            </li>
+          </ul>
+          <!-- h5代码 E-->
+          <!-- APP代码 S-->
+          <div style="display:none" class="drawer-app"></div>
+          <!-- APP代码 E-->
+        </div>
+        <div class="doc">
+          <dl class="introDl">
+            <dt>属性</dt>
+            <dd>
+              <table>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>是否必填</th>
+                  <th>类型</th>
+                  <th>校验规则</th>
+                </tr>
+                <tr>
+                  <td>num</td>
+                  <td>所验证的电话号码</td>
+                  <th>必填</th>
+                  <td>number</td>
+                  <td> 13、14、15、16、17、18、19开头的，11位 电话号码</td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+        </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+
+</script>

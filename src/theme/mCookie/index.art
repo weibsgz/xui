@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>爱卡汽车触屏端cookie</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+ 
+</style>
+<body>
+  <div id="root">2
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+        <h2 class="drawer-chou-ti">cookie插件</h2>
+        <p class="drawer-chou-title">在实际开发中我们会遇到很多特别的场景</p>
+        <p class="ji-ben-yong-fa" style="font-weight:bold">一、基本用法</p>
+        <p class="drawer-chou-title">看下我们的cookie如何使用</p>
+        <p style="font-weight:bold">二、效果展示</p>
+        <div class="effectDisplay">
+          <p style="padding-left: 129px">H5展示</p>
+          <div class="effectDisplay_body">
+             <div class="effectDisplay_bg">
+                <ul class="effectDisplay_box">
+                </ul>
+             </div>
+          </div>
+        </div>
+        <p style="font-weight:bold;margin-top:20px;margin-bottom:20px;">三、使用教程</p>
+        <div class="drawer-chou-title-border">
+          <!-- h5代码 S-->
+          <ul class="drawer-h5">
+            <li>触屏端如何使用cookie</li>
+            <li>1、安装 npm install -g  nrm </li>
+            <li>2、添加爱卡私有库源地址 nrm  add  xnpm --- http:\/\/registry.npm.op.xcar.com.cn:8081\/repository\/npm-group  切换爱卡镜像源</li>
+            <li>3、安装npm install cookie;</li>
+            <li>4、JS中引入 import 'cookie';</li>
+            <li><span style="color:red;">  Tip:  </span>public文件夹存放公共样式</li>
+            <li class="drawer-sili">代码实例</li>
+            <li>
+<pre style="overflow-x:auto;">
+  <code>
+/*js逻辑*/
+$.cookie(name, value, options); // 设置cookie
+$.cookie(name); // 获取cookie       
+  </code>
+</pre>              
+            </li>
+          </ul>
+          <!-- h5代码 E-->
+          <!-- APP代码 S-->
+          <div style="display:none" class="drawer-app"></div>
+          <!-- APP代码 E-->
+        </div>
+        <div class="doc">
+          <dl class="introDl">
+            <dt>属性</dt>
+            <dd>
+              <table>
+                <tr>
+                  <th colspan="2">参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>默认值</th>
+                </tr>
+                <tr>
+                  <td colspan="2">name</td>
+                  <td>cookie名称（必填）</td>
+                  <td>string</td>
+                  <td>无</td>
+                </tr>
+                <tr>
+                  <td colspan="2">value</td>
+                  <td>cookie名称相对应的值</td>
+                  <td>string</td>
+                  <td>无</td>
+                </tr>
+                <tr>
+                  <td rowspan="5">options</td>
+                  <td colspan="3" >cookie所需的附加配置,包括以下几项：</td>
+                </tr>
+                <tr>
+                  <td>expires</td>
+                  <td>有限日期，单位是秒。　　这个地方也要注意，如果不设置这个东西，浏览器关闭之后此cookie就失效了</td>
+                  <td>-</td>
+                  <td>无</td>
+                </tr>
+                 <tr>
+                  <td>path</td>
+                  <td>cookie值保存的路径，默认与创建页路径一致</td>
+                  <td>-</td>
+                  <td>无</td>
+                </tr>
+                 <tr>
+                  <td>domin</td>
+                  <td>cookie域名属性，默认与创建页域名一样。　　这个地方要相当注意，跨域的概念，如果要主域名二级域名有效则要设置　　".xxx.com"</td>
+                  <td>-</td>
+                  <td>无</td>
+                </tr>
+                 <tr>
+                  <td>secrue</td>
+                  <td>一个布尔值，表示传输cookie值时，是否需要一个安全协议。</td>
+                  <td>-</td>
+                  <td>无</td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+        </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+
+</script>

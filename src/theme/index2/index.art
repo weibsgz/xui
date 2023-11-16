@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+  <title>XCFE-UI</title>
+</head>
+
+<body>
+  <div id="root" class="clearfix">
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+      <div class="doc">
+        <h1>爱卡UI组件库使用开发指南</h1>
+        <dl class="introDl">
+          <dt>启动命令</dt>
+          <dd>
+            <pre>
+                开发环境：npm run dev <br />
+                生产环境：npm run build:pro <br />
+                自动fix lint: npm run lint:fix
+              </pre>
+          </dd>
+        </dl>
+
+        <dl class="introDl">
+          <dt>组件编写</dt>
+          <dd>
+            <p>1.组件在theme文件夹下 分为.art模板 入口JS文件 及自己的scss 文件 </p>
+            <p>2.所有组件内部JS的方法导出的函数都挂载到入口文件名上，入口文件名.变量名（library指定的文件名[name]）。 调用方式: xSelect.select() </p>
+            <p>3.组件的CSS命名在最父级应该以.x- 组件名，这样保证组件样式的唯一性。</p>
+          </dd>
+        </dl>
+
+
+        <dl class="introDl">
+          <dt>文档编写</dt>
+          <dd>
+            <p>1.文档应该包含在一个.doc的类中</p>
+            <pre>
+                  &lt;div class=&quot;doc&quot;&gt;...&lt;/div&gt;
+              </pre>
+            <p>2.段落</p>
+            <pre>
+                  &lt;dl class=&quot;introDl&quot;&gt;
+                    &lt;dt&gt;启动命令&lt;/dt&gt;
+                    &lt;dd&gt;                   
+                     ...                     
+                    &lt;/dd&gt;
+                  &lt;/dl&gt;
+              </pre>
+            <p>3.代码</p>
+            <p>
+              代码可以用一个&lt;pre&gt;&lt;/pre&gt;包裹
+              <br>
+              也可以使用&lt;textarea&gt;&lt;/textarea&gt;包裹
+              <br>
+              如果默认高度不够可以增加class="scroll"<br>
+              &lt;pre class=&quot;scroll&quot;&gt;&lt;/pre&gt; <br>
+              &lt;textarea class=&quot;scroll&quot;&gt;&lt;/textarea&gt;<br>
+              这里要注意：如果把代码直接拷贝进prev或者textarea容器，很可能会产生编译错误<br>
+              比如js/html其中一些 符号 会抛出错误<br>
+              此时我们需要对代码进行转义后再粘贴进去//www.sojson.com/rehtml <br>
+
+            </p>
+            <p>4.表格</p>
+            直接使用 table tr th td标签就可以
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

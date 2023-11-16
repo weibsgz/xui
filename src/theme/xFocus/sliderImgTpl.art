@@ -1,0 +1,48 @@
+<!-- 左右按钮 -->
+<a href="javascript:void(0)" class="prev" style="height:{{BtnHeight}}px;margin-top:-{{BtnHeight/2}}px"><span style="background-position :11px {{23 + (BtnHeight - 68)/2}}px"><em style="top:{{(BtnHeight - 30)/2}}px">4</em><i style="bottom:{{(BtnHeight - 30)/2}}px">8</i></span></a>
+<a href="javascript:void(0)" class="next" style="height:{{BtnHeight}}px;margin-top:-{{BtnHeight/2}}px"><span style="background-position :10px {{-231 + (BtnHeight - 68)/2}}px"><em style="top:{{(BtnHeight - 30)/2}}px">4</em><i style="bottom:{{(BtnHeight - 30)/2}}px">8</i></span></a>
+<!-- 图片列表 -->
+<div class="view">
+    <ul>
+    {{each sliderImgListObject.data as item}}
+    <li class="">
+        <a href="{{item.sliderHrefUrl}}" target="_blank">
+        <img src="{{item.sliderImg}}" alt="" title="{{item.sliderAlt}}" />
+        </a>
+    </li>
+    {{/each}}
+    </ul>
+</div>
+<!-- 按钮列表 -->
+<div class="slider" style="display:{{isShowSliderSpot ? 'block' : 'none'}};width: {{sliderImgListObject.data.length * 28}}px;margin-left:-{{(sliderImgListObject.data.length * 28)/2}}px;bottom:{{isShowTextChang ? TextChangHeight + 10 + 'px' : '10px'}}">
+    <ul>
+    {{each sliderImgListObject.data as item index}}
+    {{if index == 0}}
+    <li class="current"></li>
+    {{else}}
+    <li class=""></li>
+    {{/if}}
+    {{/each}}
+    </ul>
+</div>
+<!-- 图注列表 -->
+<div class="text" style="display:{{isShowTextChang ? 'block' : 'none'}};height:{{TextChangHeight}}px;line-height:{{TextChangHeight}}px">
+    <ul>
+    {{each sliderImgListObject.data as item}}
+        {{if !TextChang.hasOwnProperty('TextPos')}}
+            {{TextChang.TextPos = ''}}
+        {{/if}}
+        {{set values = 'left,right,center'}}
+        {{if values.indexOf(TextChang.TextPos.toLowerCase()) == -1}}
+            {{TextChang.TextPos = ''}}
+        {{/if}}
+        {{if TextChang.TextPos !== ''}}
+            <li style="text-align: {{TextChang.TextPos.toLowerCase()}};" >
+            {{else}}
+            <li style="text-align: center" >
+        {{/if}}
+        <a href="{{item.sliderHrefUrl}}" target="_blank">{{item.sliderText}}</a>
+        </li>
+    {{/each}}
+    </ul>
+</div>

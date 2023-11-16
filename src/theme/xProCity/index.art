@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>select</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+      <div class="doc">
+        <h1>省市下拉插件</h1>
+        <dl class="introDl">
+          <dt>引用地址</dt>
+          <dd>
+            <h4>1. 全部插件引入</h4>
+            <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+            <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+            <h4>2. 单独插件引入</h4>
+            <p>//asserts.xcarimg.com/xui/css/xProCity.min.css</p>
+            <p>//asserts.xcarimg.com/xui/js/single/xProCity.single.js</p>
+          </dd>
+        </dl>
+        <!-- 省市独立下拉 -->
+        <dl class="introDl">
+          <dt>省市下拉独立使用:</dt>
+          <dd class="clearfix">
+            <div class="select_box" data-box="province"></div>
+            <div class="select_box" data-box="city"></div>
+          </dd>
+          <dd>
+            <h6>HTML页面结构：</h6>
+            <pre>&lt;!-- select_box为默认样式名，可以指定任意属性作为省市下拉的初始化参数，data-属性仅作为示例使用 --&gt;<br/>&lt;div class="select_box" data-box="province"&gt;&lt;/div&gt;<br/>&lt;div class="select_box" data-box="city"&gt;&lt;/div&gt;</pre>
+            <h6>js使用示例：</h6>
+            <pre>
+              // 部分参数为非必填项，参阅配置项说明
+              var xpc1 = new xProCity.ProCity({
+                layout: 2,
+                proDom: '[data-box=province]',
+                cityDom: '[data-box=city]',
+                cityUrl: [], // --> step 1. cityUrl作为数组时，在 provinceClickCB 回调中添加城市列表初始化逻辑
+                provinceClickCB: function(args){
+                  console.log(args);
+                  var len = Math.floor(Math.random() * 50 + 1)
+                  var list = [];
+                  for(var i = 1;i &lt; len;i++){
+                    list.push({
+                      id: i,
+                      name: Math.random().toString(16).substr(2).toLowerCase()
+                    })
+                  }
+                  this.opts.cityUrl = list; // --> step 2. 城市列表数据赋值
+                  this.initCity() // --> step 3. 手动调用城市列表初始化法，
+                  // initCity 第一种使用方式：该方法内部优先判断 cityUrl 的类型，如果为接口地址时，第一个参数为请求接口的参数(必传项), 第二个参数控制当前省市下拉合并渲染时城市列表是否展开状态(非必传项)，第三个参数为初始化成功之后的回调函数(非必传项)
+                  // initCity 第二种使用方式：如果 cityUrl 为数组时，第一个参数为请求接口的参数(非必传项), 第二个参数控制当前省市下拉合并渲染时城市列表是否展开状态(非必传项)，第三个参数为初始化成功之后的回调函数(非必传项)
+                },
+                cityClickCB: function(args){
+                  console.log(args);
+                }
+              })
+              xpc1.init().set({pid: 9, cid: 2}) // 初始化，数据反显
+            </pre>
+          </dd>
+        </dl>
+        <!-- 省市合并下拉 -->
+        <dl class="introDl">
+          <dt>省市合并下拉使用:</dt>
+          <dd class="clearfix">
+            <div class="select_box" data-compact="proCity" style="height:50px;line-height:50px;"></div>
+          </dd>
+          <dd>
+            <h6>HTML页面结构：</h6>
+            <pre>&lt;!-- select_box为默认样式名，可以指定任意属性作为省市下拉的初始化参数，data-属性仅作为示例使用 --&gt;<br/>&lt;div class="select_box" data-compact="proCity"&gt;&lt;/div&gt;</pre>
+            <h6>js使用示例：</h6>
+            <pre>
+              // 部分参数为非必填项，参阅配置项说明
+              var xpc2 = new xProCity.ProCity({
+                layout: 1,
+                proDom: '[data-compact=proCity]',
+                cityDom: '[data-compact=proCity]',
+                provinceClickCB: function(args){
+                  console.log(args);
+                },
+                cityClickCB: function(args){
+                  console.log(args);
+                }
+              });
+              xpc2.init().set({pid: 9, cid: 589}) // 初始化，数据反显
+            </pre>
+          </dd>
+        </dl>
+        <!-- 省市下拉只渲染省份 -->
+        <dl class="introDl">
+          <dt>只渲染省份下拉:</dt>
+          <dd class="clearfix">
+            <div class="select_box" data-province="province"></div>
+          </dd>
+          <dd>
+            <h6>HTML页面结构：</h6>
+            <pre>&lt;!-- select_box为默认样式名，可以指定任意属性作为省市下拉的初始化参数，data-属性仅作为示例使用 --&gt;<br/>&lt;div class="select_box" data-province="province"&gt;&lt;/div&gt;</pre>
+            <h6>js使用示例：</h6>
+            <pre>
+              // 部分参数为非必填项，参阅配置项说明
+              var xpc3 = new xProCity.ProCity({
+                layout: 1,
+                proDom: '[data-province=province]',
+                proUrl:[{ value: '1', label: '北京'},{value:'2', label:'上海'},{value:'3', label:'广州'}],
+                config: {
+                  props: {
+                    value: 'value',
+                    label: 'label'
+                  }
+                },
+                provinceClickCB: function(args){
+                  console.log(args);
+                },
+                cityClickCB: function(args){
+                  console.log(args);
+                }
+              });
+              xpc3.init().set({pid: 2}) // 初始化，数据反显
+            </pre>
+          </dd>
+        </dl>
+        <dl class="introDl">
+          <dt>属性</dt>
+          <table>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>             
+              <th>可选值</th>             
+              <th>默认值</th> 
+              <th>是否必填</th>                
+              <th>备注</th>                 
+            </tr>
+            <tr>
+              <td>layout</td>
+              <td>初始化下拉类型</td>
+              <td>String|Number</td>       
+              <td>1 | 2</td>      
+              <td>1</td>
+              <td>否</td>      
+              <td>
+                1：省市下拉合并渲染，<br/>
+                2：省市下拉分开独立渲染
+              </td>
+            </tr>
+            <tr>
+              <td>proUrl</td>
+              <td>获取省份数据接口地址</td>
+              <td>String | Array</td>                         
+              <td>——</td>                         
+              <td>//www.xcar.com.cn/home_api/?service=dealer.provinces</td>
+              <td>否</td>            
+              <td>支持接口地址或已知数据</td>            
+            </tr>
+            <tr>
+              <td>proDom</td>
+              <td>初始化省份下拉容器</td>
+              <td>String | Object</td>           
+              <td>——</td>           
+              <td>——</td>
+              <td>是</td>           
+              <td>Jquery支持的任意属性类型</td>           
+            </tr>
+            <tr>
+              <td>cityUrl</td>
+              <td>获取城市数据接口地址</td>
+              <td>String | Array</td>          
+              <td>——</td>           
+              <td>//www.xcar.com.cn/home_api/?service=dealer.citys</td>     
+              <td>否</td>      
+              <td>
+                layout为2，非必填项<br/>
+                layout为1，非必填项，不传则只初始化省份
+              </td>           
+            </tr>
+            <tr>
+              <td>cityDom</td>
+              <td>初始化城市下拉容器</td>
+              <td>String | Object</td>           
+              <td>——</td>      
+              <td>——</td> 
+              <td>否</td>     
+              <td>
+                Jquery支持的任意属性类型<br/>
+                layout为2，必填项<br/>
+                layout为1，非必填项，不传则只初始化省份  
+              </td>
+            </tr>
+            <tr>
+              <td>isClear</td>
+              <td>是否在下拉框中显示删除按钮</td>
+              <td>Boolean</td>       
+              <td>true | false</td>      
+              <td>true</td>
+              <td>否</td>      
+              <td></td>
+            </tr>
+            <tr>
+              <td>config</td>
+              <td>数据配置默认项</td>
+              <td>Object</td>       
+              <td>——</td>      
+              <td>参见下面数据配置项代码示例</td>    
+              <td>否</td>  
+              <td>
+                根据需求可自定义<br/>
+                1. 可在实例化时作为参数传入<br/>
+                2. 可在实例化后单独配置实例属性覆盖默认值<br/>
+              </td>
+            </tr>
+            <tr>
+              <td>provinceClickCB</td>
+              <td>省份下拉选中回调</td>
+              <td>Function</td>
+              <td>——</td>
+              <td>null</td>
+              <td>否</td>
+              <td>回调参数为点击后的省份结果对象</td>
+            </tr>
+            <tr>
+              <td>cityClickCB</td>
+              <td>城市下拉选中回调</td>
+              <td>Function</td>
+              <td>——</td>
+              <td>null</td>
+              <td>否</td>
+              <td>回调参数为点击后的城市结果对象</td>
+            </tr>
+          </table>
+        </dl>
+        <dl class="introDl">
+          <dt>方法</dt>
+          <table>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>             
+              <th>参数</th>                            
+              <th>返回值</th>                            
+              <th>备注</th>                            
+            </tr>
+            <tr>
+              <td>init</td>
+              <td>实例化后手动调用初始化方法</td>
+              <td>Function</td>
+              <td>——</td>
+              <td>——</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>set</td>
+              <td>回显省市下拉数据</td>
+              <td>Function</td>
+              <td>{pid: 0 ,cid: 0}</td>
+              <td>——</td>
+              <td>pid: 省份id(必填项)，cid：城市id</td>
+            </tr>
+            <tr>
+              <td>get</td>
+              <td>获取省市数据</td>
+              <td>Function</td>
+              <td>{pid: 0, cid: 0}</td>
+              <td>Array</td>
+              <td>pid: 省份id(非必填项)，cid：城市id</td>
+            </tr>
+            <tr>
+              <td>clear</td>
+              <td>清除下拉选中结果</td>
+              <td>Function</td>
+              <td>$dom</td>
+              <td>实例本身</td>
+              <td>$dom 非必填项，为下拉框的容器$proDom|$cityDom</td>
+            </tr>
+            <tr>
+              <td>destroy</td>
+              <td>销毁省市下拉实例</td>
+              <td>Function</td>
+              <td>——</td>
+              <td>实例本身</td>
+              <td></td>
+            </tr>
+          </table>
+        </dl>
+        <dl class="introDl">
+          <dt>**说明</dt>
+          <dd>
+            <h6>接口响应数据结构：以上几种使用示例的响应数据结构相同</h6>
+            <pre>
+              // 响应数据结构
+              {
+                code: 0,  // 必填项, 响应状态码，0 -> 表示响应成功, 其他 -> 表示响应失败
+                msg: "成功", // 必填项，响应提示信息
+                data: [], // 必填项，响应数据列表
+              }
+            </pre>
+            <h6>全局数据配置项默认值，根据需求可单独覆盖，可在实例化作为参数传入，也可在实例化前后单独赋值覆盖</h6>
+            <pre>
+              xProCity.ProCity.config = {
+                placeholder: { // 下拉框占位提示信息配置项
+                  pro: '请选择省', // 省份下拉占位符
+                  city: '请选择市', // 城市下拉占位符
+                  combine: '请选择省市',  // 省市合并占位符
+                  delimiter: '/' // 省市合并渲染分隔符
+                },
+                props: {
+                  value: 'id', // 数据主键
+                  label: 'name' // 显示名称
+                }
+              }
+              // eg:
+              var xpc1 = new xProCity.ProCity({...});
+              xpc1.opts.config.placeholder.city = 'hello world'
+              xpc1.opts.config.props.value = 'value'
+              xpc1.init()
+            </pre>
+          </dd>
+        </dl> 
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+// 独立渲染
+var xpc1 = new xProCity.ProCity({
+  proDom: '[data-box=province]',
+  cityDom: '[data-box=city]',
+  cityUrl: [],
+  layout: 2,
+  provinceClickCB: function(args){
+    console.log(args);
+    var len = Math.floor(Math.random() * 50 + 1)
+    var list = [];
+    for(var i = 1;i < len;i++){
+      list.push({
+        id: i,
+        name: Math.random().toString(16).substr(2).toLowerCase()
+      })
+    }
+    this.opts.cityUrl = list;
+    this.initCity()
+  },
+  cityClickCB: function(args){
+    console.log(args);
+  }
+})
+xpc1.destroy().init().set({pid: 9, cid: 2}) // 初始化
+/**************************************************************/
+// 合并渲染
+var xpc2 = new xProCity.ProCity({
+  layout: 1,
+  proDom: '[data-compact=proCity]',
+  cityDom: '[data-compact=proCity]',
+  provinceClickCB: function(args){
+    console.log(args);
+  },
+  cityClickCB: function(args){
+    console.log(args);
+  }
+});
+xpc2.destroy().init().set({pid: 9, cid: 589})
+/**************************************************************/
+// 只渲染省份
+var xpc3 = new xProCity.ProCity({
+  proDom: '[data-province=province]',
+  proUrl:[{ value: '1', label: '北京'},{value:'2', label:'上海'},{value:'3', label:'广州'}],
+  config: {
+    props: {
+      value: 'value',
+      label: 'label'
+    },
+    placeholder: {
+      combine: '请选择车型'
+    }
+  },
+  layout: 1,
+  provinceClickCB: function(args){
+    console.log(args);
+  },
+  cityClickCB: function(args){
+    console.log(args);
+  }
+});
+xpc3.init().set({pid: 2, cid: 2});
+
+</script>
+</html>

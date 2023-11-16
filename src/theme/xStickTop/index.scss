@@ -1,0 +1,15 @@
+@import '../../assets/css/var.scss';
+#fix-topTitle {
+  position: fixed;
+  top: 0;
+  background: lightgreen;
+  width: 100%;
+  display: none;
+}
+.fix--top {
+  position: fixed;
+  top: 0;
+}
+.right-content {
+ overflow: hidden;
+}

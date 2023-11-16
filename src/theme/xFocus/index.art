@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>组件2</title>
+    <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+  </head>
+<style>
+
+  .introDl{
+    margin: 20px 0;
+  }
+  textarea{
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
+    padding: 18px 24px;
+    width: 1200px;
+  }
+  pre{width:1200px;}
+  .doc h3{
+    font-size: 30px;font-weight: 600px;
+  }
+
+</style>
+  <body>
+    <div id="root">
+      <div class="aside">
+        {{include '../../components/leftNav/index.art'}}
+      </div>
+
+      <div class="main">
+        
+
+        <div class="doc">
+          <h1>轮播图</h1>
+          <dl class="introDl">
+             <dt>说明</dt>
+             <dd>页面引用资源后,你可在页面创建一个空的容器,通过调用初始化级联下拉框,级联下拉框自适应容器宽度</dd>
+             <dt>引用地址</dt>
+             <dd>
+               <p>//asserts.xcarimg.com/xui/css/x-ui.min.css</p>
+               引用单个js文件
+               <p>//asserts.xcarimg.com/xui/js/single/xFocus.single.js</p>
+               或者引用全部js文件
+               <p>//asserts.xcarimg.com/xui/js/x-ui.min.js</p>
+             </dd>
+           </dl>
+           
+<dl class="introDl">
+  <dd>
+      <div style=" width: 600px;height: 300px;margin-bottom:50px;">
+          <div class="xfocus_02" id="focus001"></div>
+      </div>
+<textarea style="height: 150px;">
+    外层div为自定义div
+    <div style=" width: 600px;height: 300px;">
+        <div class="xfocus_02" id="focus001"></div>
+    </div>
+</textarea>
+
+
+<pre>
+  <h3>接口规范:</h3>
+    let sliderImgList = {
+      data:[
+        {
+          sliderImg : 'http://pic.xcarimg.com/2019/12/27/o_1dt2hq9bi48219p21hlpu2hai20.jpg?imageMogr2/format/jpg/sizeLimit/100k!/ignore-error/1',
+          sliderText : '综合性能出众 爱卡高原试驾别克昂科威',
+          sliderAlt : '综合性能出众 爱卡高原试驾别克昂科威',
+          sliderHrefUrl : 'http://www.xcar.com.cn'
+        },
+        {
+          sliderImg : 'http://pic.xcarimg.com/2019/12/27/o_1dt28loo2t1koto1a7seh23v80.jpg?imageMogr2/format/jpg/sizeLimit/100k!/ignore-error/1',
+          sliderText : '国产奥迪A3三厢版购车手册 推荐舒适型',
+          sliderAlt : '国产奥迪A3三厢版购车手册 推荐舒适型',
+          sliderHrefUrl : 'http://www.xcar.com.cn'
+        }
+      ]
+      
+    }
+    <h3>初始化焦点图:</h3>
+    new xFocus({
+      dom :'#focus001',
+      sliderImgListObject: sliderImgList,
+      TextChang:{
+        TextBoxPos:'',
+        TextPos : ''
+      },
+      BtnHeight: '60',
+      TextChangHeight:'40',
+      isShowSliderSpot : true,
+      isShowTextChang : true
+    })
+</pre>
+</dd>
+</dl>
+ 
+
+<dl class="introDl">
+    <dt>属性</dt>
+    <dd>
+      <table>
+        <tr>
+          <th>参数</th>
+          <th>说明</th>
+          <th>类型</th>
+          <th>默认值</th>
+        </tr>
+        <tr>
+          <td>dom</td>
+          <td>焦点图插入的容器</td>
+          <td>注意带. 或者  # 字符串</td>
+          <td> 必传项 </td>
+        </tr>
+        <tr>
+            <td>sliderImgListObject</td>
+            <td>接口数据</td>
+            <td>Json</td>
+            <td> 必传项 </td>
+        </tr>
+        <tr>
+            <td>TextChang</td>
+            <td>图注</td>
+            <td>Object</td>
+            <td>必传项 包含&nbsp;&nbsp;&nbsp;TextBoxPos&nbsp;&nbsp;TextPos两属性</td>
+        </tr>
+        <tr>
+            <td>TextBoxPos</td>
+            <td>图注位置</td>
+            <td>string</td>
+            <td>参数可不传，或为 ''  默认为'pos'  或 'bottom'</td>
+        </tr>
+        <tr>
+            <td>TextPos</td>
+            <td>图注文字位置</td>
+            <td>string</td>
+            <td>参数可不传，或为 ''   默认为'center' 或 'left' 或 'right'</td>
+        </tr>
+        <tr>
+            <td>BtnHeight</td>
+            <td>左右按钮高度</td>
+            <td>string</td>
+            <td>参数可不传，默认高度68px</td>
+        </tr>
+        <tr>
+            <td>TextChangHeight</td>
+            <td>图注高度</td>
+            <td>string</td>
+            <td>参数可不传，默认高度40px</td>
+        </tr>
+        <tr>
+            <td>speed</td>
+            <td>轮播间隔时间</td>
+            <td>number</td>
+            <td>参数可不传，默认为3000毫秒 &nbsp;&nbsp;(单位毫秒)</td>
+        </tr>
+        <tr>
+            <td>isShowSliderSpot</td>
+            <td>PageIndex显示/隐藏</td>
+            <td>Boolean</td>
+            <td>参数可不传，默认为false</td>
+        </tr>
+        <tr>
+            <td>isShowTextChang</td>
+            <td>图注显示/隐藏</td>
+            <td>Boolean</td>
+            <td>参数可不传，默认为false</td>
+        </tr>
+      </table>
+    </dd>
+</dl>
+          
+              
+
+        </div>
+      </div>
+    </div>   
+  </body>
+</html>
+ <script>
+let sliderImgList = {
+  data:[
+    {
+      sliderImg : 'http://pic.xcarimg.com/2019/12/27/o_1dt2hq9bi48219p21hlpu2hai20.jpg?imageMogr2/format/jpg/sizeLimit/100k!/ignore-error/1',
+      sliderText : '综合性能出众 爱卡高原试驾别克昂科威',
+      sliderAlt : '综合性能出众 爱卡高原试驾别克昂科威',
+      sliderHrefUrl : 'http://www.xcar.com.cn'
+    },
+    {
+      sliderImg : 'http://pic.xcarimg.com/2019/12/27/o_1dt28loo2t1koto1a7seh23v80.jpg?imageMogr2/format/jpg/sizeLimit/100k!/ignore-error/1',
+      sliderText : '国产奥迪A3三厢版购车手册 推荐舒适型',
+      sliderAlt : '国产奥迪A3三厢版购车手册 推荐舒适型',
+      sliderHrefUrl : 'http://www.xcar.com.cn'
+    },
+    {
+      sliderImg : 'http://pic.xcarimg.com/2019/12/27/o_1dt273jsg14isvl0ej97c8n9q0.jpg?imageMogr2/format/jpg/sizeLimit/100k!/ignore-error/1',
+      sliderText : '综合性能出众 爱卡高原试驾别克昂科威',
+      sliderAlt : '综合性能出众 爱卡高原试驾别克昂科威',
+      sliderHrefUrl : 'http://www.xcar.com.cn'
+    },
+    {
+      sliderImg : 'http://pic.xcarimg.com/2019/12/27/o_1dt274mi51pi5ea0129015gm1u3n0.jpg?imageMogr2/format/jpg/sizeLimit/100k!/ignore-error/1',
+      sliderText : '国产奥迪A3三厢版购车手册 推荐舒适型',
+      sliderAlt : '国产奥迪A3三厢版购车手册 推荐舒适型',
+      sliderHrefUrl : 'http://www.xcar.com.cn'
+    },
+    {
+      sliderImg : 'http://pic2.xcarimg.com/img/news_photo/2014/09/09/eW9OZ3IZuR4420.jpg',
+      sliderText : '综合性能出众 爱卡高原试驾别克昂科威',
+      sliderAlt : '综合性能出众 爱卡高原试驾别克昂科威',
+      sliderHrefUrl : 'http://www.xcar.com.cn'
+    },
+    {
+      sliderImg : 'http://pic3.xcarimg.com/img/news_photo/2014/09/09/PCv2GLmkfl1211.jpg',
+      sliderText : '国产奥迪A3三厢版购车手册 推荐舒适型',
+      sliderAlt : '国产奥迪A3三厢版购车手册 推荐舒适型',
+      sliderHrefUrl : 'http://www.xcar.com.cn'
+    }
+  ]
+  
+}
+
+  new xFocus({
+    dom :'#focus001',
+    sliderImgListObject: sliderImgList,
+    TextChang:{
+      TextBoxPos:'',
+      TextPos : ''
+    },
+    BtnHeight: '60',
+    TextChangHeight:'40',
+    isShowSliderSpot : true,
+    isShowTextChang : true
+  })
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>爱卡汽车触屏端report统计</title>
+  <script src="//asserts.xcarimg.com/resource/common/jquery-1.8.3.min.js"></script>
+  <script src="//asserts.xcarimg.com/resource/common/header/head/insertHead_topic_utf8.js"></script>
+</head>
+<style> 
+ 
+</style>
+<body>
+  <div id="root">2
+    <div class="aside">
+      {{include '../../components/leftNav/index.art'}}
+    </div>
+    <div class="main">
+        <h2 class="drawer-chou-ti">report 统计</h2>
+        <p class="drawer-chou-title">在实际开发中我们会遇到很多特别的场景，当完成一个项目的时，我们需要进行统计汇总，需要统计DAU、以下这些方法暴露出如何使用统计。</p>
+        <p class="ji-ben-yong-fa" style="font-weight:bold">一、基本用法</p>
+        <p class="drawer-chou-title">呼出一个侧边栏实例展示 H5&APP原生体验效果</p>
+        <p style="font-weight:bold">二、效果展示</p>
+        <div class="effectDisplay">
+          <p style="padding-left: 129px">H5展示</p>
+          <div class="effectDisplay_body">
+             <div class="bindEvnet bindEvnet1">诸葛初始化统计</div>
+             <div class="bindEvnet bindEvnet2">诸葛点击事件</div>
+             <div class="bindEvnet bindEvnet3">爱卡自有统计事件</div>
+          </div>
+        </div>
+        <p style="font-weight:bold;margin-top:20px;margin-bottom:20px;">三、使用教程</p>
+        <div class="drawer-chou-title-border">
+          <!-- h5代码 S-->
+          <ul class="drawer-h5">
+            <li>触屏端如何使用report统计代码</li>
+            <li>1、安装 npm install -g  nrm </li>
+            <li>2、添加爱卡私有库源地址 nrm  add  xnpm --- http://registry.npm.op.xcar.com.cn:8081/repository/npm-group  切换爱卡镜像源</li><li>3、安装npm install report</li>
+            <li>4、JS中引入 import report from "report";</li>
+            <li><span style="color:red;">  Tip:  </span>public文件夹存放公共样式</li>
+            <li class="drawer-sili">代码实例</li>
+            <li>
+<pre style="overflow-x:auto;">
+  <code>
+//诸葛页面初始化统计 tip:头部必须引入诸葛js  
+var page_view = 'detail_page_view';//事件名称
+var page_data = {}//页面需要传递的参数
+report.zhuGeIoInit(1,1,'page_view',page_data);    
+
+
+//诸葛页面点击统计 tip:头部必须引入诸葛js  
+var page_view = 'query_price_click';//事件名称
+var page_data = {}//页面需要传递的参数
+report.zhuGeIoCustom(1,1,'page_view',page_data);  
+
+
+//爱卡自有统计事件
+var page_view = '1277843';//此id需要产品生成
+report.clicklog(page_view);
+  </code>
+</pre>              
+            </li>
+          </ul>
+          <!-- h5代码 E-->
+          <!-- APP代码 S-->
+          <div style="display:none" class="drawer-app"></div>
+          <!-- APP代码 E-->
+        </div>
+        <div class="doc">
+          <dl class="introDl">
+            <dt>属性</dt>
+            <dd>
+              <table>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>默认值</th>
+                </tr>
+                <tr>
+                  <td>page_view</td>
+                  <td>诸葛初始化名称</td>
+                  <td>string</td>
+                  <td>无</td>
+                </tr>
+                <tr>
+                  <td>page_data</td>
+                  <td>诸葛需要传递参数</td>
+                  <td>Object</td>
+                  <td>无</td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="introDl">
+              <dt>方法</dt>
+              <dd>
+                <table>
+                  <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>                 
+                  </tr>
+                  <tr>
+                    <td>zhuGeIoInit</td>
+                    <td>诸葛初始化统计方法</td>
+                    <td>无</td>                
+                  </tr>
+                  <tr>
+                    <td>zhuGeIoCustom</td>
+                    <td>诸葛页面点击方法</td>
+                    <td>无</td>                
+                  </tr>
+                  <tr>
+                    <td>clicklog</td>
+                    <td>爱卡自有页面点击方法</td>
+                    <td>无</td>                
+                  </tr>
+                </table>
+              </dd>
+          </dl>
+        </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+
+</script>

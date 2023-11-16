@@ -1,0 +1,154 @@
+.share {
+  width: 34px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+
+  ul {
+    li {
+      width: 34px;
+      height: 34px;
+      display: block;
+      background: #fff;
+      margin-bottom: 4px;
+      padding-top: 7px;
+      position: relative;
+
+      a {
+        display: block;
+        float: none;
+        width: 20px;
+        height: 20px;
+        margin: 0 auto;
+      }
+
+      .li_box_position {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #f8f8f8;
+        padding-right: 6px;
+        position: absolute;
+        top: 0;
+        left: -174px;
+
+        .li_box {
+          width: 168px;
+          height: 168px;
+          text-align: center;
+          color: #979797;
+          border: 1px #e9e9e9 solid;
+          background: #fff;
+
+
+          i {
+            position: absolute;
+            top: 12px;
+            right: -5px;
+          }
+
+          .top_title {
+            margin-top: 10px;
+            font-size: 12px;
+          }
+
+          .bottom_title {
+            font-size: 10px;
+          }
+
+          img {
+            display: block;
+            width: 116px;
+            height: 118px;
+            margin: 0 auto;
+          }
+        }
+      }
+
+
+    }
+
+    .li_title {
+      background: #f8f8f8;
+      font-size: 12px;
+      color: #979797;
+      text-align: center;
+      line-height: 34px;
+    }
+
+    li.wx {
+      &>a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/wx2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    li.kj {
+      a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/kj2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    li.wb {
+      a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/wb2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    li.qq {
+      a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/qq2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    li.wx:hover {
+      &>a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/wx-h2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    li.kj:hover {
+      a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/kj-h2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    li.wb:hover {
+      a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/wb-h2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    li.qq:hover {
+      a {
+        background: url(//asserts.xcarimg.com/resource/xbb/dist/img/qq-h2x.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    .bottom_title {
+      a {
+        background-image: none;
+        float: none;
+        width: auto;
+        line-height: 16px;
+        height: 16px;
+        color: #979797;
+        cursor: pointer;
+        overflow: hidden;
+        font-size: 10px;
+      }
+
+      &>a:hover {
+        color: #08F;
+      }
+    }
+  }
+}
